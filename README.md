@@ -1,7 +1,7 @@
 # Alexa Find Any Film
 ## Amazon Echo Alexa Integration with findanyfilm.com for UK 
 
-To be deployed using AWS and Alexa Skills kit 
+to be deployed using AWS and Alexa Skills kit 
 
 ### AWS Lambda
 deploy the aws lambda deployment package contents as a zip file
