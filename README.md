@@ -4,8 +4,8 @@
 to be deployed using AWS and Alexa Skills kit 
 
 ### AWS Lambda
-* deploy the aws lambda deployment package contents as a zip file
 * edit keys.py with your alexa skill key
+* deploy the aws lambda deployment package contents as a zip file
 * runtime: python 2.7 
 * handler: lambda.lambda_handler
 * role: choose existing role
