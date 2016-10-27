@@ -8,9 +8,9 @@ http://amzn.to/1LGWsLG
 """
 
 from __future__ import print_function
-import json
 import requests
-from keys import ifttt_key, alexa_skill_id
+# change this from mykeys to keys
+from mykeys import alexa_skill_id
 
 # --------------- Helpers that build all of the responses ----------------------
 
@@ -64,7 +64,7 @@ def get_welcome_response():
 
 def handle_session_end_request():
     card_title = "Session Ended"
-    speech_output = "Thank you for trying if this then that..." \
+    speech_output = "Thank you for trying find any film..." \
                     "Have a nice day!"
     # Setting this to true ends the session and exits the skill.
     should_end_session = True
@@ -72,57 +72,47 @@ def handle_session_end_request():
         card_title, speech_output, None, should_end_session))
 
 
-def create_session_attributes(trigger, dataone, datatwo, datathree):
+def create_session_attributes(location, date):
     """ Sets the attributes in the session
     """
 
     return {
-        "triggerWord": trigger,
-        "dataOne": dataone,
-        "dataTwo": datatwo,
-        "dataThree": datathree
+        "location": location,
+        "date": date,
         }
 
-def make_post_request(trigger, dataone, datatwo, datathree):
-    """ Makes a POST request to the IFTTT server with the data from the Alexa
-    JSON
-    """
 
-    url = 'https://maker.ifttt.com/trigger/' + trigger + '/with/key/' + ifttt_key
-    data = {'value1': dataone, 'value2': datatwo, 'value3': datathree}
-    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    request = requests.post(url, data=json.dumps(data), headers=headers)
+#def get_location_id(location):
 
 
-def trigger_intent(intent, session):
+#def get_locaion_listings(cinema_id, date):
+
+
+#def amazon_yes_intent():
+
+
+#def amazon_no_intent():
+
+
+def whats_playing_intent(intent, session):
     """ Gets the values from the session and prepares the speech to reply to the
     user.
     """
 
     card_title = intent['name']
     session_attributes = {}
+    movies = []
     should_end_session = True
 
-    if 'value' in intent['slots']['dataone']:
-        dataone = intent['slots']['dataone']['value']
-    else:
-        dataone = ""
-    if 'value' in intent['slots']['datatwo']:
-        datatwo = intent['slots']['datatwo']['value']
-    else:
-        datatwo = ""
-    if 'value' in intent['slots']['datathree']:
-        datathree = intent['slots']['datathree']['value']
-    else:
-        datathree = ""
-
-    if 'value' in intent['slots']['trigger']:
-        trigger = intent['slots']['trigger']['value']
-        session_attributes = create_session_attributes(trigger, dataone, datatwo, datathree)
-        make_post_request(trigger, dataone, datatwo, datathree)
-        speech_output = "Thanks, I have triggered " + trigger
-        reprompt_text = "Is that everything?" \
-                        "To finish say stop"
+    if 'value' in intent['slots']['location']:
+        location = intent['slots']['location']['value']
+        r_location = requests.get('http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
+        cinema_id = r_location[0]['venue_id']
+        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + cinema_id).json()
+        for movie_id in r_movies[cinema_id]['films']:
+            movies.append(r_movies[cinema_id]['films'][movie_id]['film_data']['film_title'])
+        speech_output = "Films now showing at " + r_movies[cinema_id]['name'] + " are..." + '... '.join(movies)
+        reprompt_text = "Is that everything?"
     else:
         speech_output = "I'm not sure what you would like to do" \
                         "Please try again."
@@ -160,12 +150,14 @@ def on_intent(intent_request, session):
     intent_name = intent_request['intent']['name']
 
     # Dispatch to your skill's intent handlers
-    if intent_name == "TriggerIntent":
-        return trigger_intent(intent, session)
-    # elif intent_name == "NewIntent":
-    #     return new_intent_function(intent, session)
+    if intent_name == "whatsPlayingIntent":
+        return whats_playing_intent(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
+    # elif intent_name == "AMAZON.YesIntent":
+    #     return amazon_yes_intent()
+    # elif intent_name == "AMAZON.NoIntent":
+    #     return amazon_no_intent()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return handle_session_end_request()
     else:
@@ -190,7 +182,6 @@ def lambda_handler(event, context):
     """
     print("event.session.application.applicationId=" +
           event['session']['application']['applicationId'])
-
     """
     Uncomment this if statement and populate with your skill's application ID to
     prevent someone else from configuring a skill that sends requests to this

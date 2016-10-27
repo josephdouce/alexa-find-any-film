@@ -1,4 +1,9 @@
-TriggerIntent {trigger}
-TriggerIntent {trigger} {dataone}
-TriggerIntent {trigger} {dataone} {datatwo}
-TriggerIntent {trigger} {dataone} {datatwo} {datathree}
+whatsPlayingIntent whats playing in {location}
+whatsPlayingIntent what movies are on in {location}
+whatsPlayingIntent what movies are on at {location}
+whatsPlayingIntent whats on at {location}
+whatsPlayingIntent whats sauna {location}
+whatsPlayingIntent whats playing in {location} on the {date}
+whatsPlayingIntent what movies are on in {location} on the {date}
+whatsPlayingIntent what movies are on at {location} on the {date}
+whatsPlayingIntent whats on at {location} on the {date}

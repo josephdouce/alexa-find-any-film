@@ -1,24 +1,17 @@
 {
   "intents": [
     {
-      "intent": "TriggerIntent",
+      "intent": "whatsPlayingIntent",
       "slots": [
         {
-            "name": "trigger",
-            "type": "TRIGGERS"
+            "name": "location",
+            "type": "LOCATIONS"
         },
         {
-            "name": "dataone",
-            "type": "DATA"
-        },
-        {
-            "name": "datatwo",
-            "type": "DATA"
-        },
-        {
-            "name": "datathree",
-            "type": "DATA"
+            "name": "date",
+            "type": "AMAZON.DATE"
         }
+
       ]
     },
     {
@@ -26,6 +19,15 @@
     },
     {
       "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.YesIntent"
+    },
+    {
+      "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
     }
   ]
 }
