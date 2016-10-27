@@ -85,7 +85,7 @@ def create_session_attributes(location, date):
 #def get_location_id(location):
 
 
-#def get_locaion_listings(cinema_id, date):
+#def get_locaion_listings(venue_id, date):
 
 
 #def amazon_yes_intent():
@@ -106,12 +106,16 @@ def whats_playing_intent(intent, session):
 
     if 'value' in intent['slots']['location']:
         location = intent['slots']['location']['value']
+        if 'value' in intent['slots']['date']:
+            date = intent['slots']['date']['value']
+        else:
+            date = date.today()
         r_location = requests.get('http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
-        cinema_id = r_location[0]['venue_id']
-        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + cinema_id).json()
-        for movie_id in r_movies[cinema_id]['films']:
-            movies.append(r_movies[cinema_id]['films'][movie_id]['film_data']['film_title'])
-        speech_output = "Films now showing at " + r_movies[cinema_id]['name'] + " are..." + '... '.join(movies)
+        venue_id = r_location[0]['venue_id']
+        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + venue_id + "date_from/" + date).json()
+        for movie_id in r_movies[venue_id]['films']:
+            movies.append(r_movies[venue_id]['films'][movie_id]['film_data']['film_title'])
+        speech_output = "Films showing at " + r_movies[venue_id]['name'] + " on the " + date + " are..." + '... '.join(movies)
         reprompt_text = "Is that everything?"
     else:
         speech_output = "I'm not sure what you would like to do" \
