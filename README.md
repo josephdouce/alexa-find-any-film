@@ -17,7 +17,7 @@ deploy the aws lambda deployment package contents as a zip file
 ### Alexa Skills Kit
 
 **intents:** intents.js  
-**custom slot type:** LOCATIONS values: locations.txt  
+**custom slot type:** LOCATIONS **values:** locations.txt  
 **samle utterances:** sample-utterances.txt      
 
 ### Usage
