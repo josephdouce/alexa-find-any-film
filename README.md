@@ -1,5 +1,5 @@
 # Alexa Find Any Film
-## Amazon Echo Alexa Integration with findanyfilm.com for UK 
+## Amazon Echo Alexa Integration with findanyfilm.com for UK movie listings
 
 to be deployed using AWS and Alexa Skills kit 
 
