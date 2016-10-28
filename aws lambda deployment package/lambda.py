@@ -6,131 +6,192 @@ as testing instructions are located at http://amzn.to/1LzFrj6
 For additional samples, visit the Alexa Skills Kit Getting Started guide at
 http://amzn.to/1LGWsLG
 """
+# pylint: disable=C0103
 
 from __future__ import print_function
-import requests
 import datetime as dt
+import requests
 # change this from mykeys to keys
-from mykeys import alexa_skill_id
 
-# --------------- Helpers that build all of the responses ----------------------
+# --------------- Helper class that builds all of the responses ----------------------
 
-def build_speechlet_response(title, output, reprompt_text, should_end_session):
-    return {
-        'outputSpeech': {
-            'type': 'PlainText',
-            'text': output
-        },
-        'card': {
-            'type': 'Simple',
-            'title': title,
-            'content': output
-        },
-        #'reprompt': {
-        #    'outputSpeech': {
-        #        'type': 'PlainText',
-        #        'text': reprompt_text
-        #    }
-        #},
-        'shouldEndSession': should_end_session
-    }
+class Helper(object):
+    """ Helper class for building json responses """
 
+    request_film = {}
+    request_films = {}
+    request_location = {}
 
-def build_response(session_attributes, speechlet_response):
-    return {
-        'version': '1.0',
-        'sessionAttributes': session_attributes,
-        'response': speechlet_response
-    }
+    def __init__(self, arg):
+        super(Helper, self).__init__()
+        self.arg = arg
 
-
-# --------------- Functions that control the skill's behavior ------------------
-
-def get_welcome_response():
-    """ If we wanted to initialize the session to have some attributes we could
-    add those here
-    """
-
-    session_attributes = {}
-    card_title = "Welcome"
-    speech_output = "Welcome to films." \
-                    "Please tell me the location of your desired cinema."
-    # If the user either does not reply to the welcome message or says something
-    # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Please tell me the location of your desired cinema."
-    should_end_session = False
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
-
-
-def handle_session_end_request():
-    card_title = "Session Ended"
-    speech_output = "Thank you for trying find any film..." \
-                    "Have a nice day!"
-    # Setting this to true ends the session and exits the skill.
-    should_end_session = True
-    return build_response({}, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
-
-
-def create_session_attributes(location, from_date):
-    """ Sets the attributes in the session
-    """
-
-    return {
-        "location": location,
-        "date": from_date,
+    def build_response(self, session_attributes, speechlet_response):
+        """ builds json response """
+        return {
+            'version': '1.0',
+            'sessionAttributes': session_attributes,
+            'response': speechlet_response
         }
 
+    def build_speechlet_response(self, title, output, reprompt_text, should_end_session):
+        """ builds speechlet response """
+        return {
+            'outputSpeech': {
+                'type': 'PlainText',
+                'text': output
+            },
+            'card': {
+                'type': 'Simple',
+                'title': title,
+                'content': output
+            },
+            'reprompt': {
+                'outputSpeech': {
+                    'type': 'PlainText',
+                    'text': reprompt_text
+                }
+            },
+            'shouldEndSession': should_end_session
+        }
 
-#def get_location_id(location):
-
-
-#def get_locaion_listings(venue_id, date):
-
-
-#def amazon_yes_intent():
-
-
-#def amazon_no_intent():
-
-
-def whats_playing_intent(intent, session):
-    """ Gets the values from the session and prepares the speech to reply to the
-    user.
-    """
-
-    card_title = ""
-    session_attributes = {}
-    movies = []
-    should_end_session = True
-
-    if 'value' in intent['slots']['location']:
-        location = intent['slots']['location']['value']
-        if 'value' in intent['slots']['date']:
-            from_date = intent['slots']['date']['value']
-        else:
-            from_date = dt.datetime.today().strftime("%Y-%m-%d")
-        r_location = requests.get('http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
-        if r_location == []:
+    def get_venue_id(self, location):
+        """" get venue id from api using location """
+        self.request_location = requests.get(
+            'http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
+        if self.request_location == []:
             venue_id = "10539"
         else:
-            venue_id = r_location[0]['venue_id']
-        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + venue_id + "date_from/" + from_date).json()
-        for movie_id in r_movies[venue_id]['films']:
-            movies.append(r_movies[venue_id]['films'][movie_id]['film_data']['film_title'])
-        create_session_attributes(location, from_date)
-        card_title = r_movies[venue_id]['name']
-        speech_output = "Films showing at " + r_movies[venue_id]['name'] + " on the " + from_date + " are..." + ', '.join(movies)
-        reprompt_text = "Is that everything?"
-    else:
-        speech_output = "I'm not sure what you would like to do" \
-                        "Please try again."
-        reprompt_text = "I'm not sure what you would like to do"
+            venue_id = self.request_location[0]['venue_id']
 
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
+        return venue_id
 
+    def get_films(self, venue_id, from_date):
+        """ get venue id from api using location """
+        movies = []
+        self.request_films = requests.get(
+            'http://findanyfilm.com/api/screenings/by_venue_id/venue_id/'
+            + venue_id + "date_from/" + from_date).json()
+        for movie_id in self.request_films[venue_id]['films']:
+            movies.append(self.request_films[venue_id]['films'][
+                movie_id]['film_data']['film_title'])
+
+        return movies
+
+    def get_imdb_rating(self, film):
+        """ get venue imdb rating from api using name """
+        self.request_film = requests.get('http://www.omdbapi.com/?t=' +
+                                         film + '&y=&plot=short&r=json').json()
+        imdb_rating = self.request_film['imdbRating']
+
+        return imdb_rating
+
+
+# --------------- Class that control the skill's behavior ------------------
+
+class Intents(object):
+    """ intents class """
+
+    films = []
+
+    def __init__(self, arg):
+        super(Intents, self).__init__()
+        self.arg = arg
+
+    def whats_playing_intent(self, intent, session):
+        """ Gets the values from the session and prepares the speech to reply to the
+        user.
+        """
+
+        card_title = ""
+        session_attributes = {}
+        should_end_session = True
+
+        if 'value' in intent['slots']['location']:
+            location = intent['slots']['location']['value']
+            if 'value' in intent['slots']['date']:
+                from_date = intent['slots']['date']['value']
+            else:
+                from_date = dt.datetime.today().strftime("%Y-%m-%d")
+            venue_id = Helper1.get_venue_id(location)
+            self.films = Helper1.get_films(venue_id, from_date)
+            venue_name = Helper1.request_films[venue_id]['name']
+            card_title = venue_name
+            speech_output = "Films showing at " + \
+                venue_name + " on the " + \
+                from_date + " are..." + ', '.join(self.films)
+            reprompt_text = "Would you like any more information on any of these movies?"
+        else:
+            speech_output = "I'm not sure what you would like to do" \
+                            "Please try again."
+            reprompt_text = "I'm not sure what you would like to do"
+
+        speechlet_response = Helper1.build_speechlet_response(
+            card_title, speech_output, reprompt_text, should_end_session)
+        return Helper1.build_response(session_attributes, speechlet_response)
+
+    def more_information_intent(self, intent, session):
+        """ Gets the values from the session and prepares the speech to reply to the
+        user.
+        """
+
+        card_title = ""
+        session_attributes = {}
+        should_end_session = True
+
+        if 'value' in intent['slots']['film']:
+            film = intent['slots']['film']['value']
+            imdb_rating = Helper1.get_imdb_rating(film)
+            showtimes = {}
+            card_title = film
+            speech_output = film + " has an I.M.D.B rating of " + imdb_rating + \
+                "The show times for this movie are " + ', '.join(showtimes)
+            reprompt_text = "Would you like to book this film?"
+        else:
+            speech_output = "I'm not sure what you would like to do" \
+                            "Please try again."
+            reprompt_text = "I'm not sure what you would like to do"
+
+        speechlet_response = Helper1.build_speechlet_response(
+            card_title, speech_output, reprompt_text, should_end_session)
+        return Helper1.build_response(session_attributes, speechlet_response)
+
+    def welcome_response(self):
+        """ If we wanted to initialize the session to have some attributes we could
+        add those here
+        """
+
+        session_attributes = {}
+        card_title = "Welcome"
+        speech_output = "Welcome to films." \
+                        "Please tell me the location of your desired cinema."
+        # If the user either does not reply to the welcome message or says something
+        # that is not understood, they will be prompted again with this text.
+        reprompt_text = "Please tell me the location of your desired cinema."
+        should_end_session = False
+        speechlet_response = Helper1.build_speechlet_response(
+            card_title, speech_output, reprompt_text, should_end_session)
+        return Helper1.build_response(session_attributes, speechlet_response)
+
+    # def amazon_yes_intent():
+
+    # def amazon_no_intent():
+
+    def handle_session_end_request(self):
+        """ Called when session end request recieved """
+        card_title = "Session Ended"
+        speech_output = "Thank you for trying find any film..." \
+                        "Have a nice day!"
+        # Setting this to true ends the session and exits the skill.
+        should_end_session = True
+        speechlet_response = Helper1.build_speechlet_response(
+            card_title, speech_output, None, should_end_session)
+        return Helper1.build_response({}, speechlet_response)
+
+# --------------- Secondary handlers ------------------
+
+Helper1 = Helper("arg")
+Intents1 = Intents("arg")
 
 def on_session_started(session_started_request, session):
     """ Called when the session starts """
@@ -147,7 +208,7 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    return get_welcome_response()
+    return Intents1.welcome_response()
 
 
 def on_intent(intent_request, session):
@@ -161,15 +222,17 @@ def on_intent(intent_request, session):
 
     # Dispatch to your skill's intent handlers
     if intent_name == "whatsPlayingIntent":
-        return whats_playing_intent(intent, session)
+        return Intents1.whats_playing_intent(intent, session)
+    elif intent_name == "moreInformationIntent":
+        return Intents1.more_information_intent(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
-        return get_welcome_response()
+        return Intents1.welcome_response()
     # elif intent_name == "AMAZON.YesIntent":
     #     return amazon_yes_intent()
     # elif intent_name == "AMAZON.NoIntent":
     #     return amazon_no_intent()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
-        return handle_session_end_request()
+        return Intents1.handle_session_end_request()
     else:
         raise ValueError("Invalid intent")
 
@@ -197,8 +260,10 @@ def lambda_handler(event, context):
     prevent someone else from configuring a skill that sends requests to this
     function.
     """
+    from mykeys import alexa_skill_id
+
     if event['session']['application']['applicationId'] != \
-        alexa_skill_id:
+            alexa_skill_id:
         raise ValueError("Invalid Application ID")
 
     if event['session']['new']:
