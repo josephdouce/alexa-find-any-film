@@ -9,6 +9,7 @@ http://amzn.to/1LGWsLG
 
 from __future__ import print_function
 import requests
+import datetime as dt
 # change this from mykeys to keys
 from mykeys import alexa_skill_id
 
@@ -22,8 +23,8 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
         },
         'card': {
             'type': 'Simple',
-            'title': "SessionSpeechlet - " + title,
-            'content': "SessionSpeechlet - " + output
+            'title': title,
+            'content': output
         },
         #'reprompt': {
         #    'outputSpeech': {
@@ -52,11 +53,11 @@ def get_welcome_response():
 
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Welcome to if this then that" \
-                    "Please tell me the trigger you would like to activate."
+    speech_output = "Welcome to films." \
+                    "Please tell me the location of your desired cinema."
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Please tell me the trigger you would like to activate."
+    reprompt_text = "Please tell me the location of your desired cinema."
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
@@ -72,13 +73,13 @@ def handle_session_end_request():
         card_title, speech_output, None, should_end_session))
 
 
-def create_session_attributes(location, date):
+def create_session_attributes(location, from_date):
     """ Sets the attributes in the session
     """
 
     return {
         "location": location,
-        "date": date,
+        "date": from_date,
         }
 
 
@@ -99,7 +100,7 @@ def whats_playing_intent(intent, session):
     user.
     """
 
-    card_title = intent['name']
+    card_title = ""
     session_attributes = {}
     movies = []
     should_end_session = True
@@ -107,15 +108,20 @@ def whats_playing_intent(intent, session):
     if 'value' in intent['slots']['location']:
         location = intent['slots']['location']['value']
         if 'value' in intent['slots']['date']:
-            date = intent['slots']['date']['value']
+            from_date = intent['slots']['date']['value']
         else:
-            date = date.today()
+            from_date = dt.datetime.today().strftime("%Y-%m-%d")
         r_location = requests.get('http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
-        venue_id = r_location[0]['venue_id']
-        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + venue_id + "date_from/" + date).json()
+        if r_location == []:
+            venue_id = "10539"
+        else:
+            venue_id = r_location[0]['venue_id']
+        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + venue_id + "date_from/" + from_date).json()
         for movie_id in r_movies[venue_id]['films']:
             movies.append(r_movies[venue_id]['films'][movie_id]['film_data']['film_title'])
-        speech_output = "Films showing at " + r_movies[venue_id]['name'] + " on the " + date + " are..." + '... '.join(movies)
+        create_session_attributes(location, from_date)
+        card_title = r_movies[venue_id]['name']
+        speech_output = "Films showing at " + r_movies[venue_id]['name'] + " on the " + from_date + " are..." + ', '.join(movies)
         reprompt_text = "Is that everything?"
     else:
         speech_output = "I'm not sure what you would like to do" \
