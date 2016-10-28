@@ -8,10 +8,16 @@ http://amzn.to/1LGWsLG
 """
 
 from __future__ import print_function
-import requests
 import datetime as dt
+import requests
 # change this from mykeys to keys
 from mykeys import alexa_skill_id
+
+# --------------- Define global variables --------------------------------------
+
+request_films = {}
+request_film = {}
+request_location = {}
 
 # --------------- Helpers that build all of the responses ----------------------
 
@@ -26,12 +32,12 @@ def build_speechlet_response(title, output, reprompt_text, should_end_session):
             'title': title,
             'content': output
         },
-        #'reprompt': {
-        #    'outputSpeech': {
-        #        'type': 'PlainText',
-        #        'text': reprompt_text
-        #    }
-        #},
+        'reprompt': {
+            'outputSpeech': {
+                'type': 'PlainText',
+                'text': reprompt_text
+           }
+        },
         'shouldEndSession': should_end_session
     }
 
@@ -46,7 +52,7 @@ def build_response(session_attributes, speechlet_response):
 
 # --------------- Functions that control the skill's behavior ------------------
 
-def get_welcome_response():
+def welcome_response():
     """ If we wanted to initialize the session to have some attributes we could
     add those here
     """
@@ -73,20 +79,34 @@ def handle_session_end_request():
         card_title, speech_output, None, should_end_session))
 
 
-def create_session_attributes(location, from_date):
-    """ Sets the attributes in the session
+def more_information_intent(intent, session):
+    """ Gets the values from the session and prepares the speech to reply to the
+    user.
     """
 
-    return {
-        "location": location,
-        "date": from_date,
-        }
+    global request_film
+    global request_films
 
+    card_title = ""
+    session_attributes = {}
+    should_end_session = True
 
-#def get_location_id(location):
+    if 'value' in intent['slots']['film']:
+        film = intent['slots']['film']['value']
+        request_film = requests.get('http://www.omdbapi.com/?t=' + film + '&y=&plot=short&r=json').json()
+        imdb_rating = request_film['imdbRating']
+        showtimes = {}
+        card_title = ""
+        speech_output = film + " has an I.M.D.B rating of " + imdb_rating + \
+                        "The show times for this movie are " + ', '.join(showtimes)
+        reprompt_text = "Would you like to book this film?"
+    else:
+        speech_output = "I'm not sure what you would like to do" \
+                        "Please try again."
+        reprompt_text = "I'm not sure what you would like to do"
 
-
-#def get_locaion_listings(venue_id, date):
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
 
 
 #def amazon_yes_intent():
@@ -100,6 +120,9 @@ def whats_playing_intent(intent, session):
     user.
     """
 
+    global request_films
+    global request_location
+
     card_title = ""
     session_attributes = {}
     movies = []
@@ -111,18 +134,17 @@ def whats_playing_intent(intent, session):
             from_date = intent['slots']['date']['value']
         else:
             from_date = dt.datetime.today().strftime("%Y-%m-%d")
-        r_location = requests.get('http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
-        if r_location == []:
+        request_location = requests.get('http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
+        if request_location == []:
             venue_id = "10539"
         else:
-            venue_id = r_location[0]['venue_id']
-        r_movies = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + venue_id + "date_from/" + from_date).json()
-        for movie_id in r_movies[venue_id]['films']:
-            movies.append(r_movies[venue_id]['films'][movie_id]['film_data']['film_title'])
-        create_session_attributes(location, from_date)
-        card_title = r_movies[venue_id]['name']
-        speech_output = "Films showing at " + r_movies[venue_id]['name'] + " on the " + from_date + " are..." + ', '.join(movies)
-        reprompt_text = "Is that everything?"
+            venue_id = request_location[0]['venue_id']
+        request_films = requests.get('http://findanyfilm.com/api/screenings/by_venue_id/venue_id/' + venue_id + "date_from/" + from_date).json()
+        for movie_id in request_films[venue_id]['films']:
+            movies.append(request_films[venue_id]['films'][movie_id]['film_data']['film_title'])
+        card_title = request_films[venue_id]['name']
+        speech_output = "Films showing at " + request_films[venue_id]['name'] + " on the " + from_date + " are..." + ', '.join(movies)
+        reprompt_text = "Would you like any more information on any of these movies?"
     else:
         speech_output = "I'm not sure what you would like to do" \
                         "Please try again."
@@ -147,7 +169,7 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
-    return get_welcome_response()
+    return welcome_response()
 
 
 def on_intent(intent_request, session):
@@ -162,8 +184,10 @@ def on_intent(intent_request, session):
     # Dispatch to your skill's intent handlers
     if intent_name == "whatsPlayingIntent":
         return whats_playing_intent(intent, session)
+    elif intent_name == "moreInformationIntent":
+        return more_information_intent(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
-        return get_welcome_response()
+        return welcome_response()
     # elif intent_name == "AMAZON.YesIntent":
     #     return amazon_yes_intent()
     # elif intent_name == "AMAZON.NoIntent":
