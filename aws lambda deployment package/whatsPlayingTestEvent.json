@@ -1,0 +1,32 @@
+{
+    "session": {
+        "sessionId": "SessionId.b77f85f2-3f23-4e49-96b8-b608119d78ed",
+        "application": {
+            "applicationId": "amzn1.ask.skill.9dbc8e09-a1a5-46b4-8e72-4f42b4677158"
+        },
+        "attributes": {},
+        "user": {
+            "userId": "amzn1.ask.account.AELL2LNJPJWMN3CBWVELMAVRFQBUCFEJPNVMP5CZWUEUQPETJPSOHG6DFOQ3XZDW4SHL53PJSZ5B23QX7JCQFNATQNQS6M7PKWWTLQLCTPU2IKVFBBNOHGHU3Y6GZ6XYTLPCPCRFNLZBMDI6CQH6NZCKBL2TMANDX4THTUEMMDWQQZLIUJ4XWROREV3DMPSKEROMNUR5MPQVTOY"
+        },
+        "new": true
+    },
+    "request": {
+        "type": "IntentRequest",
+        "requestId": "EdwRequestId.258fdccb-a94b-49b7-9b97-dd916ddf911d",
+        "locale": "en-GB",
+        "timestamp": "2016-10-28T08:25:57Z",
+        "intent": {
+            "name": "whatsPlayingIntent",
+            "slots": {
+                "location": {
+                    "name": "location",
+                    "value": "leeds"
+                },
+                "date": {
+                    "name": "date"
+                }
+            }
+        }
+    },
+    "version": "1.0"
+}
