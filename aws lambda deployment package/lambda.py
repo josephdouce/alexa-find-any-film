@@ -1,10 +1,5 @@
 """
-This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
-The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well
-as testing instructions are located at http://amzn.to/1LzFrj6
-
-For additional samples, visit the Alexa Skills Kit Getting Started guide at
-http://amzn.to/1LGWsLG
+This is a skill that uses various API's to supply film data for a location and date specified.
 """
 # pylint: disable=C0103
 # pylint: disable=R0201
@@ -72,15 +67,15 @@ class HelperClass(object):
 
     def get_films(self, venue_id, from_date):
         """ get venue id from api using location """
-        movies = []
+        films = []
         self.request_films = requests.get(
             'http://findanyfilm.com/api/screenings/by_venue_id/venue_id/'
             + venue_id + "date_from/" + from_date).json()
         for movie_id in self.request_films[venue_id]['films']:
-            movies.append(self.request_films[venue_id]['films'][
+            films.append(self.request_films[venue_id]['films'][
                 movie_id]['film_data']['film_title'])
 
-        return movies
+        return films
 
     def get_imdb_rating(self, film):
         """ get venue imdb rating from api using name """
@@ -94,10 +89,10 @@ class HelperClass(object):
         """ get showtimes api using name """
         showtimes = []
 
-        for item in Intents.request_films[Intents.request_films.keys()[0]]['films']:
-            if film == Intents.request_films[Intents.request_films.keys()[0]]['films'][item]['film_data']['film_title']:
+        for item in Intents.session_attributes['request_films'][Intents.session_attributes['request_films'].keys()[0]]['films']:
+            if film == Intents.session_attributes['request_films'][Intents.session_attributes['request_films'].keys()[0]]['films'][item]['film_data']['film_title']:
                 film_id = item
-        for item in Intents.request_films[Intents.request_films.keys()[0]]['films'][film_id]['showings']:
+        for item in Intents.session_attributes['request_films'][Intents.session_attributes['request_films'].keys()[0]]['films'][film_id]['showings']:
             showtimes.append(item['display_showtime'])
 
         return showtimes
@@ -110,7 +105,6 @@ class IntentsClass(object):
 
     films = []
     session_attributes = {}
-    request_films = {}
 
     def __init__(self, arg):
         super(IntentsClass, self).__init__()
@@ -157,7 +151,6 @@ class IntentsClass(object):
 
         card_title = ""
         self.session_attributes = session['attributes']
-        self.request_films = session['attributes']['request_films']
         should_end_session = True
 
         if 'value' in intent['slots']['film']:
@@ -165,7 +158,6 @@ class IntentsClass(object):
                 'attributes']['films'])[0]
             imdb_rating = Helper.get_imdb_rating(film)
             showtimes = Helper.get_showtimes(film)
-            #showtimes = []
             card_title = film
             speech_output = film + " has an I.M.D.B rating of " + imdb_rating + \
                 ". The show times for this movie are " + ', '.join(showtimes)
