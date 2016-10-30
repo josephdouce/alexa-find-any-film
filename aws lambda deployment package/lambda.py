@@ -85,14 +85,14 @@ class HelperClass(object):
 
         return imdb_rating
 
-    def get_showtimes(self, film):
+    def get_showtimes(self, film, session):
         """ get showtimes api using name """
         showtimes = []
 
-        for item in Intents.session_attributes['request_films'][Intents.session_attributes['request_films'].keys()[0]]['films']:
-            if film == Intents.session_attributes['request_films'][Intents.session_attributes['request_films'].keys()[0]]['films'][item]['film_data']['film_title']:
+        for item in session['attributes']['request_films'][session['attributes']['request_films'].keys()[0]]['films']:
+            if film == session['attributes']['request_films'][session['attributes']['request_films'].keys()[0]]['films'][item]['film_data']['film_title']:
                 film_id = item
-        for item in Intents.session_attributes['request_films'][Intents.session_attributes['request_films'].keys()[0]]['films'][film_id]['showings']:
+        for item in session['attributes']['request_films'][session['attributes']['request_films'].keys()[0]]['films'][film_id]['showings']:
             showtimes.append(item['display_showtime'])
 
         return showtimes
@@ -116,8 +116,7 @@ class IntentsClass(object):
         """
 
         card_title = ""
-        self.session_attributes = session['attributes']
-        should_end_session = True
+        should_end_session = False
 
         if 'value' in intent['slots']['location']:
             location = intent['slots']['location']['value']
@@ -132,7 +131,7 @@ class IntentsClass(object):
             speech_output = "Films showing at " + \
                 venue_name + " on the " + \
                 from_date + " are..." + ', '.join(self.films)
-            reprompt_text = "Would you like any more information on any of these movies?"
+            reprompt_text = "Which movie would you like to know more about?"
         else:
             speech_output = "I'm not sure what you would like to do" \
                             "Please try again."
@@ -150,14 +149,13 @@ class IntentsClass(object):
         """
 
         card_title = ""
-        self.session_attributes = session['attributes']
         should_end_session = True
 
         if 'value' in intent['slots']['film']:
             film = process.extractOne(intent['slots']['film']['value'], session[
                 'attributes']['films'])[0]
             imdb_rating = Helper.get_imdb_rating(film)
-            showtimes = Helper.get_showtimes(film)
+            showtimes = Helper.get_showtimes(film, session)
             card_title = film
             speech_output = film + " has an I.M.D.B rating of " + imdb_rating + \
                 ". The show times for this movie are " + ', '.join(showtimes)
@@ -276,11 +274,11 @@ def lambda_handler(event, context):
     prevent someone else from configuring a skill that sends requests to this
     function.
     """
-    from mykeys import alexa_skill_id
-
-    if event['session']['application']['applicationId'] != \
-            alexa_skill_id:
-        raise ValueError("Invalid Application ID")
+#    from mykeys import alexa_skill_id
+#
+#    if event['session']['application']['applicationId'] != \
+#            alexa_skill_id:
+#        raise ValueError("Invalid Application ID")
 
     if event['session']['new']:
         on_session_started({'requestId': event['request']['requestId']}, event['session'])
