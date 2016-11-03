@@ -84,7 +84,7 @@ class HelperClass(object):
         try:
             imdb_rating = self.request_film['imdbRating']
         except:
-            imdb_rating = "Unknown"
+            imdb_rating = "not availaible"
 
         return imdb_rating
 
@@ -168,8 +168,7 @@ class IntentsClass(object):
                 showtimes = ', '.join(Helper.get_showtimes(film, session))
             except:
                 film = intent['slots']['film']['value']
-                showtimes = "Unknown"
-                print "except"
+                showtimes = "not available"
 
             imdb_rating = Helper.get_imdb_rating(film)
             card_title = film
