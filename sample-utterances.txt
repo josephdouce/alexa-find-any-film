@@ -1,3 +1,6 @@
+whatsPlayingIntent what's on in {location}
+whatsPlayingIntent what's showing in {location} on the {date}
+
 whatsPlayingIntent what's on at {location}
 whatsPlayingIntent what's sauna {location}
 whatsPlayingIntent what is on at {location}
@@ -6,11 +9,21 @@ whatsPlayingIntent what's playing in {location}
 whatsPlayingIntent what's playing at {location}
 whatsPlayingIntent what is playing in {location}
 whatsPlayingIntent what is playing at {location}
+whatsPlayingIntent what's showing in {location}
+whatsPlayingIntent what's showing at {location}
+whatsPlayingIntent what is showing in {location}
+whatsPlayingIntent what is showing at {location}
 whatsPlayingIntent what movies are on in {location}
 whatsPlayingIntent what movies are on at {location}
 whatsPlayingIntent what's on at the {location}
 whatsPlayingIntent which films are showing at {location}
 whatsPlayingIntent which films are showing in {location}
+whatsPlayingIntent what films are showing at {location}
+whatsPlayingIntent what films are showing in {location}
+whatsPlayingIntent which movies are showing at {location}
+whatsPlayingIntent which movies are showing in {location}
+whatsPlayingIntent what movies are showing at {location}
+whatsPlayingIntent what movies are showing in {location}
 
 whatsPlayingIntent what's playing in {location} on the {date}
 whatsPlayingIntent what's playing in {location} on {date}
@@ -47,3 +60,17 @@ whatsPlayingIntent which films are showing at {location} {date}
 whatsPlayingIntent which films are showing in {location} on the {date}
 whatsPlayingIntent which films are showing in {location} on {date}
 whatsPlayingIntent which films are showing in {location} {date}
+
+whatsPlayingIntent what movies are playing in {location} on the {date}
+whatsPlayingIntent what movies are playing in {location} on {date}
+whatsPlayingIntent what movies are playing in {location} {date}
+
+whatsPlayingIntent what movies are playing at {location} on the {date}
+whatsPlayingIntent what movies are playing at {location} on {date}
+whatsPlayingIntent what movies are playing at {location} {date}
+
+whatsPlayingIntent what movies are playing at the {location} on the {date}
+whatsPlayingIntent what movies are playing at the {location} on {date}
+whatsPlayingIntent what movies are playing at the {location} {date}
+
+moreInformationIntent {film}

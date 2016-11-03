@@ -81,7 +81,10 @@ class HelperClass(object):
         """ get venue imdb rating from api using name """
         self.request_film = requests.get('http://www.omdbapi.com/?t=' +
                                          film + '&y=&plot=short&r=json').json()
-        imdb_rating = self.request_film['imdbRating']
+        try:
+            imdb_rating = self.request_film['imdbRating']
+        except:
+            imdb_rating = "Unknown"
 
         return imdb_rating
 
@@ -130,12 +133,13 @@ class IntentsClass(object):
             card_title = venue_name
             speech_output = "Films showing at " + \
                 venue_name + " on the " + \
-                from_date + " are..." + ', '.join(self.films)
+                from_date + " are: " + ', '.join(self.films) + \
+                " . Which movie would you like to know more about?"
             reprompt_text = "Which movie would you like to know more about?"
         else:
-            speech_output = "I'm not sure what you would like to do" \
+            speech_output = "I'm not sure what you would like to do. " \
                             "Please try again."
-            reprompt_text = "I'm not sure what you would like to do"
+            reprompt_text = "I'm not sure what you would like to do."
 
         self.session_attributes.update(
             {"films": self.films, "request_films": Helper.request_films})
@@ -149,25 +153,37 @@ class IntentsClass(object):
         """
 
         card_title = ""
+        speech_output = ""
+        reprompt_text = ""
         should_end_session = True
+        session_attributes = {}
+        film = ""
+        showtimes = ""
+        imdb_rating = ""
 
         if 'value' in intent['slots']['film']:
-            film = process.extractOne(intent['slots']['film']['value'], session[
-                'attributes']['films'])[0]
+            try:
+                film = process.extractOne(intent['slots']['film']['value'], session[
+                    'attributes']['films'])[0]
+                showtimes = ', '.join(Helper.get_showtimes(film, session))
+            except:
+                film = intent['slots']['film']['value']
+                showtimes = "Unknown"
+                print "except"
+
             imdb_rating = Helper.get_imdb_rating(film)
-            showtimes = Helper.get_showtimes(film, session)
             card_title = film
-            speech_output = film + " has an I.M.D.B rating of " + imdb_rating + \
-                ". The show times for this movie are " + ', '.join(showtimes)
+            speech_output = film + " has an I.M.D.B rating of " + \
+                imdb_rating + ". The show times for this movie are " + showtimes
             reprompt_text = "Would you like to book this film?"
         else:
-            speech_output = "I'm not sure what you would like to do" \
+            speech_output = "I'm not sure what you would like to do. " \
                             "Please try again."
-            reprompt_text = "I'm not sure what you would like to do"
+            reprompt_text = "I'm not sure what you would like to do."
 
         speechlet_response = Helper.build_speechlet_response(
             card_title, speech_output, reprompt_text, should_end_session)
-        return Helper.build_response(self.session_attributes, speechlet_response)
+        return Helper.build_response(session_attributes, speechlet_response)
 
     def welcome_response(self):
         """ If we wanted to initialize the session to have some attributes we could
@@ -176,7 +192,7 @@ class IntentsClass(object):
 
         session_attributes = {}
         card_title = "Welcome"
-        speech_output = "Welcome to films." \
+        speech_output = "Welcome to film finder. " \
                         "Please tell me the location of your desired cinema."
         # If the user either does not reply to the welcome message or says something
         # that is not understood, they will be prompted again with this text.

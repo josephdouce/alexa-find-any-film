@@ -15,6 +15,15 @@
       ]
     },
     {
+      "intent": "moreInformationIntent",
+      "slots": [
+        {
+            "name": "film",
+            "type": "FILMS"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
