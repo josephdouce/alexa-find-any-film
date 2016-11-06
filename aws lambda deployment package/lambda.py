@@ -19,11 +19,15 @@ class HelperClass(object):
     request_film = {}
     request_films = {}
     request_location = {}
+    films = []
+    showtimes = []
+    session_attributes = {}
 
-    def __init__(self, arg):
-        super(HelperClass, self).__init__()
-        self.arg = arg
+    def __init__(self):
         self.venue_id = ""
+        self.imdb_rating = ""
+        self.venue_name = ""
+        self.film = ""
 
     def build_response(self, session_attributes, speechlet_response):
         """ builds json response """
@@ -67,58 +71,52 @@ class HelperClass(object):
 
     def get_films(self, venue_id, from_date):
         """ get venue id from api using location """
-        films = []
         self.request_films = requests.get(
             'http://findanyfilm.com/api/screenings/by_venue_id/venue_id/'
             + venue_id + "date_from/" + from_date).json()
         for movie_id in self.request_films[venue_id]['films']:
-            films.append(self.request_films[venue_id]['films'][
+            self.films.append(self.request_films[venue_id]['films'][
                 movie_id]['film_data']['film_title'])
 
-        return films
+        return self.films
 
     def get_imdb_rating(self, film):
         """ get venue imdb rating from api using name """
         self.request_film = requests.get('http://www.omdbapi.com/?t=' +
                                          film + '&y=&plot=short&r=json').json()
         try:
-            imdb_rating = self.request_film['imdbRating']
+            self.imdb_rating = self.request_film['imdbRating']
         except:
-            imdb_rating = "not availaible"
+            self.imdb_rating = "not availaible"
 
-        return imdb_rating
+        return self.imdb_rating
 
     def get_showtimes(self, film, session):
         """ get showtimes api using name """
-        showtimes = []
+        films_json = session['attributes']['request_films'].values()[0]['films']
 
-        for item in session['attributes']['request_films'][session['attributes']['request_films'].keys()[0]]['films']:
-            if film == session['attributes']['request_films'][session['attributes']['request_films'].keys()[0]]['films'][item]['film_data']['film_title']:
+        for item in films_json:
+            if film == films_json[item]['film_data']['film_title']:
                 film_id = item
-        for item in session['attributes']['request_films'][session['attributes']['request_films'].keys()[0]]['films'][film_id]['showings']:
-            showtimes.append(item['display_showtime'])
+        for item in films_json[film_id]['showings']:
+            self.showtimes.append(item['display_showtime'])
 
-        return showtimes
+        return self.showtimes
 
 # --------------- Class that control the skill's behavior ------------------
 
 
-class IntentsClass(object):
+class IntentsClass(HelperClass):
     """ intents class """
 
-    films = []
-    session_attributes = {}
-
-    def __init__(self, arg):
+    def __init__(self):
         super(IntentsClass, self).__init__()
-        self.arg = arg
 
     def whats_playing_intent(self, intent, session):
         """ Gets the values from the session and prepares the speech to reply to the
         user.
         """
 
-        card_title = ""
         should_end_session = False
 
         if 'value' in intent['slots']['location']:
@@ -127,14 +125,12 @@ class IntentsClass(object):
                 from_date = intent['slots']['date']['value']
             else:
                 from_date = dt.datetime.today().strftime("%Y-%m-%d")
-            venue_id = Helper.get_venue_id(location)
-            self.films = Helper.get_films(venue_id, from_date)
-            venue_name = Helper.request_films[venue_id]['name']
-            card_title = venue_name
-            speech_output = "Films showing at " + \
-                venue_name + " on the " + \
-                from_date + " are: " + ', '.join(self.films) + \
-                " . Which movie would you like to know more about?"
+            self.venue_id = Helper.get_venue_id(location)
+            self.films = Helper.get_films(self.venue_id, from_date)
+            self.venue_name = Helper.request_films[self.venue_id]['name']
+            card_title = self.venue_name
+            speech_output = "Films showing at %s on the %s are: %s. Which movie would you like to know more about?" % (
+                self.venue_name, from_date, ', '.join(self.films))
             reprompt_text = "Which movie would you like to know more about?"
         else:
             speech_output = "I'm not sure what you would like to do. " \
@@ -152,28 +148,21 @@ class IntentsClass(object):
         user.
         """
 
-        card_title = ""
-        speech_output = ""
-        reprompt_text = ""
         should_end_session = True
-        session_attributes = {}
-        film = ""
-        showtimes = ""
-        imdb_rating = ""
 
         if 'value' in intent['slots']['film']:
             try:
-                film = process.extractOne(intent['slots']['film']['value'], session[
+                self.film = process.extractOne(intent['slots']['film']['value'], session[
                     'attributes']['films'])[0]
-                showtimes = ', '.join(Helper.get_showtimes(film, session))
+                self.showtimes = ', '.join(Helper.get_showtimes(self.film, session))
             except:
-                film = intent['slots']['film']['value']
-                showtimes = "not available"
+                self.film = intent['slots']['film']['value']
+                self.showtimes = "not available"
 
-            imdb_rating = Helper.get_imdb_rating(film)
-            card_title = film
-            speech_output = film + " has an I.M.D.B rating of " + \
-                imdb_rating + ". The show times for this movie are " + showtimes
+            self.imdb_rating = Helper.get_imdb_rating(self.film)
+            card_title = self.film
+            speech_output = "%s has an I.M.D.B rating of %s. The show times for this movie are %s " % (
+                self.film, self.imdb_rating, self.showtimes)
             reprompt_text = "Would you like to book this film?"
         else:
             speech_output = "I'm not sure what you would like to do. " \
@@ -182,24 +171,42 @@ class IntentsClass(object):
 
         speechlet_response = Helper.build_speechlet_response(
             card_title, speech_output, reprompt_text, should_end_session)
-        return Helper.build_response(session_attributes, speechlet_response)
+        return Helper.build_response(self.session_attributes, speechlet_response)
 
     def welcome_response(self):
         """ If we wanted to initialize the session to have some attributes we could
         add those here
         """
 
-        session_attributes = {}
         card_title = "Welcome"
         speech_output = "Welcome to film finder. " \
-                        "Please tell me the location of your desired cinema."
+                        "To get cinema listings please ask: whats playing in , location , on the , date. " \
+                        "Alternativley, to get a movie rating please state the name of a movie."
         # If the user either does not reply to the welcome message or says something
         # that is not understood, they will be prompted again with this text.
-        reprompt_text = "Please tell me the location of your desired cinema."
+        reprompt_text = "To get cinema listings please ask: whats playing in , location , on the , date. " \
+                        "Alternativley, to get a movie rating please state the name of a movie."
         should_end_session = False
         speechlet_response = Helper.build_speechlet_response(
             card_title, speech_output, reprompt_text, should_end_session)
-        return Helper.build_response(session_attributes, speechlet_response)
+        return Helper.build_response(self.session_attributes, speechlet_response)
+
+    def help_response(self):
+        """ If we wanted to initialize the session to have some attributes we could
+        add those here
+        """
+        card_title = "Help"
+        speech_output = "Welcome to film finder. " \
+                        "To get cinema listings please ask: whats playing in , location , on the , date. " \
+                        "Alternativley, to get a movie rating please state the name of a movie."
+        # If the user either does not reply to the welcome message or says something
+        # that is not understood, they will be prompted again with this text.
+        reprompt_text = "To get cinema listings please ask: whats playing in , location , on the , date. " \
+                        "Alternativley, to get a movie rating please state the name of a movie."
+        should_end_session = False
+        speechlet_response = Helper.build_speechlet_response(
+            card_title, speech_output, reprompt_text, should_end_session)
+        return Helper.build_response(self.session_attributes, speechlet_response)
 
     # def amazon_yes_intent():
 
@@ -218,8 +225,8 @@ class IntentsClass(object):
 
 # --------------- Secondary handlers ------------------
 
-Helper = HelperClass("arg")
-Intents = IntentsClass("arg")
+Helper = HelperClass()
+Intents = IntentsClass()
 
 
 def on_session_started(session_started_request, session):
@@ -255,7 +262,7 @@ def on_intent(intent_request, session):
     elif intent_name == "moreInformationIntent":
         return Intents.more_information_intent(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
-        return Intents.welcome_response()
+        return Intents.help_response()
     # elif intent_name == "AMAZON.YesIntent":
     #     return amazon_yes_intent()
     # elif intent_name == "AMAZON.NoIntent":

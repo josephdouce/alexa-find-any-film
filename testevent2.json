@@ -1,0 +1,406 @@
+{
+  "session": {
+    "sessionId": "SessionId.567aa9ed-bc8e-473a-896e-2948e138183a",
+    "application": {
+      "applicationId": "amzn1.ask.skill.19bfe0fe-60bc-40d2-a357-8ed4b3b5b18a"
+    },
+    "attributes": {
+  "films": [
+    "The Magnificent Seven",
+    "War On Everyone",
+    "The Girl On the Train",
+    "Trolls",
+    "Miss Peregrine's Home for Peculiar Children",
+    "Deepwater Horizon",
+    "Doctor Strange",
+    "Inferno",
+    "Ae Dil Hai Mushkil",
+    "Keeping Up With the Joneses"
+  ],
+  "request_films": {
+    "10539": {
+      "website": "http://www1.cineworld.co.uk/cinemas/london-leicester-square",
+      "distance": "-1",
+      "show_towncity": true,
+      "name": "Cineworld London - Leicester Square",
+      "address1": "5-6 Leicester Square, <br /> London",
+      "lon": "-0.127780",
+      "phone": "0871 200 2000",
+      "postcode": "WC2H 7NA",
+      "lat": "51.513390",
+      "towncity": "Camden Town",
+      "films": {
+        "140572": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "Keeping Up With the Joneses",
+            "has_3d_version": "0",
+            "film_id": "140572",
+            "slug": "Keeping-Up-With-the-Joneses"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 11:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3470",
+              "enabled": true,
+              "display_showtime": "11:00"
+            },
+            {
+              "showtime": "2016-10-30 14:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3467",
+              "enabled": true,
+              "display_showtime": "14:00"
+            },
+            {
+              "showtime": "2016-10-30 16:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3482",
+              "enabled": true,
+              "display_showtime": "16:30"
+            },
+            {
+              "showtime": "2016-10-30 19:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3468",
+              "enabled": true,
+              "display_showtime": "19:00"
+            },
+            {
+              "showtime": "2016-10-30 21:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3469",
+              "enabled": true,
+              "display_showtime": "21:30"
+            }
+          ]
+        },
+        "141096": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "Inferno",
+            "has_3d_version": "1",
+            "film_id": "141096",
+            "slug": "Inferno"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 13:10:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3474",
+              "enabled": true,
+              "display_showtime": "13:10"
+            },
+            {
+              "showtime": "2016-10-30 16:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3475",
+              "enabled": true,
+              "display_showtime": "16:00"
+            },
+            {
+              "showtime": "2016-10-30 18:50:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3476",
+              "enabled": true,
+              "display_showtime": "18:50"
+            },
+            {
+              "showtime": "2016-10-30 21:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3492",
+              "enabled": true,
+              "display_showtime": "21:00"
+            }
+          ]
+        },
+        "141353": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "Miss Peregrine's Home for Peculiar Children",
+            "has_3d_version": "1",
+            "film_id": "141353",
+            "slug": "Miss-Peregrine-s-Home-for-Peculiar-Children"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 11:15:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3478",
+              "enabled": true,
+              "display_showtime": "11:15"
+            },
+            {
+              "showtime": "2016-10-30 14:15:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3479",
+              "enabled": true,
+              "display_showtime": "14:15"
+            },
+            {
+              "showtime": "2016-10-30 15:10:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3487",
+              "enabled": true,
+              "display_showtime": "15:10"
+            },
+            {
+              "showtime": "2016-10-30 17:15:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3480",
+              "enabled": true,
+              "display_showtime": "17:15"
+            },
+            {
+              "showtime": "2016-10-30 20:15:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3481",
+              "enabled": true,
+              "display_showtime": "20:15"
+            }
+          ]
+        },
+        "144861": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "The Magnificent Seven",
+            "has_3d_version": "0",
+            "film_id": "144861",
+            "slug": "The-Magnificent-Seven"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 12:10:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3485",
+              "enabled": true,
+              "display_showtime": "12:10"
+            },
+            {
+              "showtime": "2016-10-30 20:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3473",
+              "enabled": true,
+              "display_showtime": "20:30"
+            }
+          ]
+        },
+        "145330": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "15",
+            "film_title": "The Girl On the Train",
+            "has_3d_version": "0",
+            "film_id": "145330",
+            "slug": "The-Girl-On-the-Train"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 12:40:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3386",
+              "enabled": true,
+              "display_showtime": "12:40"
+            },
+            {
+              "showtime": "2016-10-30 15:20:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3387",
+              "enabled": true,
+              "display_showtime": "15:20"
+            },
+            {
+              "showtime": "2016-10-30 18:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3388",
+              "enabled": true,
+              "display_showtime": "18:00"
+            },
+            {
+              "showtime": "2016-10-30 20:40:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3389",
+              "enabled": true,
+              "display_showtime": "20:40"
+            }
+          ]
+        },
+        "145553": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "U",
+            "film_title": "Trolls",
+            "has_3d_version": "1",
+            "film_id": "145553",
+            "slug": "Trolls"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 11:10:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3488",
+              "enabled": true,
+              "display_showtime": "11:10"
+            },
+            {
+              "showtime": "2016-10-30 12:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3496",
+              "enabled": true,
+              "display_showtime": "12:30"
+            },
+            {
+              "showtime": "2016-10-30 13:40:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3489",
+              "enabled": true,
+              "display_showtime": "13:40"
+            },
+            {
+              "showtime": "2016-10-30 15:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3497",
+              "enabled": true,
+              "display_showtime": "15:00"
+            },
+            {
+              "showtime": "2016-10-30 16:10:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3490",
+              "enabled": true,
+              "display_showtime": "16:10"
+            },
+            {
+              "showtime": "2016-10-30 17:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3498",
+              "enabled": true,
+              "display_showtime": "17:30"
+            },
+            {
+              "showtime": "2016-10-30 18:40:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3491",
+              "enabled": true,
+              "display_showtime": "18:40"
+            }
+          ]
+        },
+        "145640": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "Deepwater Horizon",
+            "has_3d_version": "0",
+            "film_id": "145640",
+            "slug": "Deepwater-Horizon"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 11:20:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3466",
+              "enabled": true,
+              "display_showtime": "11:20"
+            },
+            {
+              "showtime": "2016-10-30 18:10:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3486",
+              "enabled": true,
+              "display_showtime": "18:10"
+            },
+            {
+              "showtime": "2016-10-30 21:40:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3483",
+              "enabled": true,
+              "display_showtime": "21:40"
+            }
+          ]
+        },
+        "145656": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "Doctor Strange",
+            "has_3d_version": "1",
+            "film_id": "145656",
+            "slug": "Doctor-Strange"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 12:50:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3493",
+              "enabled": true,
+              "display_showtime": "12:50"
+            },
+            {
+              "showtime": "2016-10-30 15:40:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3494",
+              "enabled": true,
+              "display_showtime": "15:40"
+            },
+            {
+              "showtime": "2016-10-30 18:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3495",
+              "enabled": true,
+              "display_showtime": "18:30"
+            },
+            {
+              "showtime": "2016-10-30 21:15:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/2625",
+              "enabled": true,
+              "display_showtime": "21:15"
+            }
+          ]
+        },
+        "146101": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "12A",
+            "film_title": "Ae Dil Hai Mushkil",
+            "has_3d_version": "0",
+            "film_id": "146101",
+            "slug": "Ae-Dil-Hai-Mushkil"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 13:30:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3471",
+              "enabled": true,
+              "display_showtime": "13:30"
+            },
+            {
+              "showtime": "2016-10-30 17:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3472",
+              "enabled": true,
+              "display_showtime": "17:00"
+            },
+            {
+              "showtime": "2016-10-30 20:00:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3499",
+              "enabled": true,
+              "display_showtime": "20:00"
+            }
+          ]
+        },
+        "147688": {
+          "film_data": {
+            "release_year": "2016",
+            "certificate": "15",
+            "film_title": "War On Everyone",
+            "has_3d_version": "0",
+            "film_id": "147688",
+            "slug": "War-On-Everyone"
+          },
+          "showings": [
+            {
+              "showtime": "2016-10-30 20:50:00",
+              "ticketing_link": "https://booking.cineworld.co.uk/booking/8110/3484",
+              "enabled": true,
+              "display_showtime": "20:50"
+            }
+          ]
+        }
+      }
+    }
+  }
+},
+    "user": {
+      "userId": "amzn1.ask.account.AG4EA4YELTXMDOTBGML65H6FLUS4HVD3OBAKI3AKMRYK4XBYTGA2C7FH6OH4OTPVIJFKD7RIFC5CDD6IC77WTTW3QCNMYS2ONOPRMLQ7ET3G2QCDOXQHV2WXOSEYQA7MB2V5N3QWJAZKQ4LAXBCR7GUS2LOUKHWGEQZ7NPZHDCSKK2M3SHRVQGT2SINYMIZF77UVRK7JW7IM6JQ"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.08f3d6c9-34d4-432a-9a69-7008f1c8e7d0",
+    "locale": "en-GB",
+    "timestamp": "2016-10-30T09:57:55Z",
+    "intent": {
+      "name": "moreInformationIntent",
+      "slots": {
+        "film": {
+          "name": "film",
+          "value": "the magnificent seven"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
