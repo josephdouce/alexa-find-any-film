@@ -1,0 +1,15 @@
+#############################################################
+# This file is intended to be used with the service here:
+# http://www.makermusings.com/amazon-echo-utterance-expander/
+# which generates a complete set of utternances based on the
+# choices embedded below. See the website for more details.
+# If making changes to this file, it should be processed again
+# by the website to create the utterances to refresh
+# sample-utterances.txt file which is then pasted in when
+# creating/updating the Alexa skill
+#
+# Only copy and paste the lines below this comment block
+#############################################################
+
+moreInformationIntent (/tell me (/all)/give me) (/information/details) about {film}
+whatsPlayingIntent ((what is/what's) sauna/(what's/what is/(what/which) (films/movies) (are/is)) (on/playing/showing)) (/(/at/in) (/the) {location}) (/(/on (/the))  {date})
