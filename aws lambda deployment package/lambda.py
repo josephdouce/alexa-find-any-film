@@ -7,6 +7,8 @@ This is a skill that uses various API's to supply film data for a location and d
 import datetime as dt
 import requests
 from fuzzywuzzy import process
+from yaep import populate_env
+from yaep import env
 
 # change this from mykeys to keys
 
@@ -60,6 +62,10 @@ class HelperClass(object):
 
     def get_venue_id(self, location):
         """" get venue id from api using location """
+        if not location:
+            if env('DEFAULT_LOCATION'):
+                location = env('DEFAULT_LOCATION')
+                
         self.request_location = requests.get(
             'http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
         if self.request_location == []:
@@ -223,6 +229,24 @@ class IntentsClass(HelperClass):
             card_title, speech_output, None, should_end_session)
         return Helper.build_response({}, speechlet_response)
 
+# --------------- Environment functions ------------------
+
+ENV_FILE = os.path.join(os.path.dirname(__file__), ".env")
+
+def setup_env():
+  os.environ['ENV_FILE'] = ENV_FILE
+  populate_env()    
+
+    def verify_application_id(candidate):
+  if env('SKILL_APPID'):
+    try:
+      print "Verifying application ID..."
+      if candidate not in env('SKILL_APPID'):
+        raise ValueError("Application ID verification failed")
+    except ValueError as e:
+      print e.args[0]
+      raise
+        
 # --------------- Secondary handlers ------------------
 
 Helper = HelperClass()
@@ -296,6 +320,13 @@ def lambda_handler(event, context):
     prevent someone else from configuring a skill that sends requests to this
     function.
     """
+    
+    #Setup environment
+    setup_env()
+    
+    # Verify the application ID is what the user expects
+    verify_application_id(appid)    
+    
 #    from mykeys import alexa_skill_id
 #
 #    if event['session']['application']['applicationId'] != \
