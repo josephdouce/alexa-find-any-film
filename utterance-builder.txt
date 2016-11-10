@@ -9,7 +9,14 @@
 # creating/updating the Alexa skill
 #
 # Only copy and paste the lines below this comment block
+#
+# Note that the Alexa Skills Kit only seems to support about
+# 2000 entries in the sample utterances, and each additional
+# choice provided in the patterns below will double the
+# overall number of utterances for that line!
 #############################################################
 
 moreInformationIntent (/tell me (/all)/give me) (/information/details) about {film}
-whatsPlayingIntent ((what is/what's) sauna/(what's/what is/(what/which) (films/movies) (are/is)) (on/playing/showing)) (/(/at/in) (/the) {location}) (/(/on (/the))  {date})
+whatsPlayingIntent (what is/what's/(what/which) (films/movies) are) (on/playing/showing) (/(at/in) (/the) {location}) (/(/on (/the)) {date})
+whenSpecificFilmPlayingIntent (when/at (what/which) (time/times)) {film} is (on/playing/showing) (/(at/in) (/the) {location}) (/(/on (/the)) {date})
+whenSpecificFilmPlayingIntent (/what/when) (/the) (showtimes/times) (/are) for {film} (/are) (/(at/in) (/the) {location}) (/(/on (/the)) {date})

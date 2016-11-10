@@ -15,6 +15,24 @@
       ]
     },
     {
+      "intent": "whenSpecificFilmPlayingIntent",
+      "slots": [
+        {
+            "name": "location",
+            "type": "LOCATIONS"
+        },
+        {
+            "name": "film",
+            "type": "FILMS"
+        },
+        {
+            "name": "date",
+            "type": "AMAZON.DATE"
+        }
+
+      ]
+    },
+    {
       "intent": "moreInformationIntent",
       "slots": [
         {
