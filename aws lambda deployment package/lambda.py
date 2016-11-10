@@ -6,7 +6,10 @@ This is a skill that uses various API's to supply film data for a location and d
 
 import datetime as dt
 import requests
+import os.path
 from fuzzywuzzy import process
+from yaep import populate_env
+from yaep import env
 
 # change this from mykeys to keys
 
@@ -59,7 +62,7 @@ class HelperClass(object):
         }
 
     def get_venue_id(self, location):
-        """" get venue id from api using location """
+        """" get venue id from api using location """        
         self.request_location = requests.get(
             'http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
         if self.request_location == []:
@@ -93,7 +96,7 @@ class HelperClass(object):
 
     def get_showtimes(self, film, session):
         """ get showtimes api using name """
-        films_json = session['attributes']['request_films'].values()[0]['films']
+        films_json = self.request_films.values()[0]['films']
 
         for item in films_json:
             if film == films_json[item]['film_data']['film_title']:
@@ -121,10 +124,18 @@ class IntentsClass(HelperClass):
 
         if 'value' in intent['slots']['location']:
             location = intent['slots']['location']['value']
+        elif env('DEFAULT_LOCATION'):
+            location = env('DEFAULT_LOCATION')
+
+        if not location:
+            speech_output = "Please provide a location or set a default one."
+            reprompt_text = "Please provide a location or set a default one."
+        else:        
             if 'value' in intent['slots']['date']:
                 from_date = intent['slots']['date']['value']
             else:
                 from_date = dt.datetime.today().strftime("%Y-%m-%d")
+
             self.venue_id = Helper.get_venue_id(location)
             self.films = Helper.get_films(self.venue_id, from_date)
             self.venue_name = Helper.request_films[self.venue_id]['name']
@@ -132,13 +143,53 @@ class IntentsClass(HelperClass):
             speech_output = "Films showing at %s on the %s are: %s. Which movie would you like to know more about?" % (
                 self.venue_name, from_date, ', '.join(self.films))
             reprompt_text = "Which movie would you like to know more about?"
-        else:
-            speech_output = "I'm not sure what you would like to do. " \
-                            "Please try again."
-            reprompt_text = "I'm not sure what you would like to do."
 
         self.session_attributes.update(
             {"films": self.films, "request_films": Helper.request_films})
+        speechlet_response = Helper.build_speechlet_response(
+            card_title, speech_output, reprompt_text, should_end_session)
+        return Helper.build_response(self.session_attributes, speechlet_response)
+        
+    def when_specific_film_playing_intent(self, intent, session):
+        """ Gets the values from the session and prepares the speech to reply to the
+        user.
+        """
+
+        should_end_session = True
+
+        if 'value' in intent['slots']['location']:
+            location = intent['slots']['location']['value']
+        elif env('DEFAULT_LOCATION'):
+            location = env('DEFAULT_LOCATION')
+
+        if not location:
+            speech_output = "I'm not sure what you would like to do. " \
+                            "Please try again."
+            reprompt_text = "I'm not sure what you would like to do."
+        else:        
+            if 'value' in intent['slots']['date']:
+                from_date = intent['slots']['date']['value']
+            else:
+                from_date = dt.datetime.today().strftime("%Y-%m-%d")
+
+            self.venue_id = Helper.get_venue_id(location)
+            self.films = Helper.get_films(self.venue_id, from_date)
+            self.venue_name = Helper.request_films[self.venue_id]['name']
+
+            try:
+                self.film = process.extractOne(intent['slots']['film']['value'], self.films)[0]
+                self.showtimes = ', '.join(Helper.get_showtimes(self.film, session))
+                card_title = self.film
+                speech_output = "%s is showing at %s on the %s at %s " % (
+                    self.film, self.venue_name, from_date, self.showtimes)
+            except:
+                self.film = intent['slots']['film']['value']
+                self.showtimes = "not available"
+                card_title = self.film
+                speech_output = "Could not find a film called %s showing at %s on the %s" % (
+                    self.film, self.venue_name, from_date)
+
+        reprompt_text = "Should not see this!"
         speechlet_response = Helper.build_speechlet_response(
             card_title, speech_output, reprompt_text, should_end_session)
         return Helper.build_response(self.session_attributes, speechlet_response)
@@ -223,6 +274,27 @@ class IntentsClass(HelperClass):
             card_title, speech_output, None, should_end_session)
         return Helper.build_response({}, speechlet_response)
 
+# --------------- Environment functions ------------------
+
+ENV_FILE = os.path.join(os.path.dirname(__file__), ".env")
+
+def setup_env():
+    os.environ['ENV_FILE'] = ENV_FILE
+    populate_env()    
+
+def verify_application_id(candidate):
+    if env('SKILL_APPID'):
+        try:
+            print "Verifying application ID..."
+            if candidate not in env('SKILL_APPID'):
+                raise ValueError("Application ID verification failed")
+            else:
+                print "Application ID succesfully verified."
+
+        except ValueError as e:
+            print e.args[0]
+            raise
+        
 # --------------- Secondary handlers ------------------
 
 Helper = HelperClass()
@@ -259,6 +331,8 @@ def on_intent(intent_request, session):
     # Dispatch to your skill's intent handlers
     if intent_name == "whatsPlayingIntent":
         return Intents.whats_playing_intent(intent, session)
+    elif intent_name == "whenSpecificFilmPlayingIntent":
+        return Intents.when_specific_film_playing_intent(intent, session)
     elif intent_name == "moreInformationIntent":
         return Intents.more_information_intent(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
@@ -286,6 +360,10 @@ def on_session_ended(session_ended_request, session):
 # --------------- Main handler ------------------
 
 def lambda_handler(event, context):
+
+    appid = event['session']['application']['applicationId']
+    print("lambda_handler: applicationId=" + appid)
+    
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
     etc.) The JSON body of the request is provided in the event parameter.
     """
@@ -296,6 +374,13 @@ def lambda_handler(event, context):
     prevent someone else from configuring a skill that sends requests to this
     function.
     """
+    
+    #Setup environment
+    setup_env()
+    
+    # Verify the application ID is what the user expects
+    verify_application_id(appid)    
+    
 #    from mykeys import alexa_skill_id
 #
 #    if event['session']['application']['applicationId'] != \
