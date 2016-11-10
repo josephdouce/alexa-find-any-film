@@ -1,19 +1,297 @@
-moreInformationIntent {film}
 moreInformationIntent about {film}
+moreInformationIntent details about {film}
+moreInformationIntent give me about {film}
+moreInformationIntent give me details about {film}
+moreInformationIntent give me information about {film}
+moreInformationIntent information about {film}
+moreInformationIntent tell me about {film}
+moreInformationIntent tell me all about {film}
+moreInformationIntent tell me all details about {film}
+moreInformationIntent tell me all information about {film}
+moreInformationIntent tell me details about {film}
+moreInformationIntent tell me information about {film}
+whatsPlayingIntent what films are on
+whatsPlayingIntent what films are on at the {location}
+whatsPlayingIntent what films are on at the {location} on the {date}
+whatsPlayingIntent what films are on at the {location} on {date}
+whatsPlayingIntent what films are on at the {location} {date}
+whatsPlayingIntent what films are on at {location}
 whatsPlayingIntent what films are on at {location} on the {date}
 whatsPlayingIntent what films are on at {location} on {date}
 whatsPlayingIntent what films are on at {location} {date}
+whatsPlayingIntent what films are on in the {location}
+whatsPlayingIntent what films are on in the {location} on the {date}
+whatsPlayingIntent what films are on in the {location} on {date}
+whatsPlayingIntent what films are on in the {location} {date}
+whatsPlayingIntent what films are on in {location}
 whatsPlayingIntent what films are on in {location} on the {date}
 whatsPlayingIntent what films are on in {location} on {date}
 whatsPlayingIntent what films are on in {location} {date}
+whatsPlayingIntent what films are on on the {date}
+whatsPlayingIntent what films are on on {date}
+whatsPlayingIntent what films are on the {location}
+whatsPlayingIntent what films are on the {location} on the {date}
+whatsPlayingIntent what films are on the {location} on {date}
+whatsPlayingIntent what films are on the {location} {date}
+whatsPlayingIntent what films are on {date}
+whatsPlayingIntent what films are on {location}
+whatsPlayingIntent what films are on {location} on the {date}
+whatsPlayingIntent what films are on {location} on {date}
+whatsPlayingIntent what films are on {location} {date}
+whatsPlayingIntent what films are playing
+whatsPlayingIntent what films are playing at the {location}
+whatsPlayingIntent what films are playing at the {location} on the {date}
+whatsPlayingIntent what films are playing at the {location} on {date}
+whatsPlayingIntent what films are playing at the {location} {date}
+whatsPlayingIntent what films are playing at {location}
+whatsPlayingIntent what films are playing at {location} on the {date}
+whatsPlayingIntent what films are playing at {location} on {date}
+whatsPlayingIntent what films are playing at {location} {date}
+whatsPlayingIntent what films are playing in the {location}
+whatsPlayingIntent what films are playing in the {location} on the {date}
+whatsPlayingIntent what films are playing in the {location} on {date}
+whatsPlayingIntent what films are playing in the {location} {date}
+whatsPlayingIntent what films are playing in {location}
+whatsPlayingIntent what films are playing in {location} on the {date}
+whatsPlayingIntent what films are playing in {location} on {date}
+whatsPlayingIntent what films are playing in {location} {date}
+whatsPlayingIntent what films are playing on the {date}
+whatsPlayingIntent what films are playing on {date}
+whatsPlayingIntent what films are playing the {location}
+whatsPlayingIntent what films are playing the {location} on the {date}
+whatsPlayingIntent what films are playing the {location} on {date}
+whatsPlayingIntent what films are playing the {location} {date}
+whatsPlayingIntent what films are playing {date}
+whatsPlayingIntent what films are playing {location}
+whatsPlayingIntent what films are playing {location} on the {date}
+whatsPlayingIntent what films are playing {location} on {date}
+whatsPlayingIntent what films are playing {location} {date}
+whatsPlayingIntent what films are showing
+whatsPlayingIntent what films are showing at the {location}
+whatsPlayingIntent what films are showing at the {location} on the {date}
+whatsPlayingIntent what films are showing at the {location} on {date}
+whatsPlayingIntent what films are showing at the {location} {date}
 whatsPlayingIntent what films are showing at {location}
+whatsPlayingIntent what films are showing at {location} on the {date}
+whatsPlayingIntent what films are showing at {location} on {date}
+whatsPlayingIntent what films are showing at {location} {date}
+whatsPlayingIntent what films are showing in the {location}
+whatsPlayingIntent what films are showing in the {location} on the {date}
+whatsPlayingIntent what films are showing in the {location} on {date}
+whatsPlayingIntent what films are showing in the {location} {date}
 whatsPlayingIntent what films are showing in {location}
+whatsPlayingIntent what films are showing in {location} on the {date}
+whatsPlayingIntent what films are showing in {location} on {date}
+whatsPlayingIntent what films are showing in {location} {date}
+whatsPlayingIntent what films are showing on the {date}
+whatsPlayingIntent what films are showing on {date}
+whatsPlayingIntent what films are showing the {location}
+whatsPlayingIntent what films are showing the {location} on the {date}
+whatsPlayingIntent what films are showing the {location} on {date}
+whatsPlayingIntent what films are showing the {location} {date}
+whatsPlayingIntent what films are showing {date}
+whatsPlayingIntent what films are showing {location}
+whatsPlayingIntent what films are showing {location} on the {date}
+whatsPlayingIntent what films are showing {location} on {date}
+whatsPlayingIntent what films are showing {location} {date}
+whatsPlayingIntent what films is on
+whatsPlayingIntent what films is on at the {location}
+whatsPlayingIntent what films is on at the {location} on the {date}
+whatsPlayingIntent what films is on at the {location} on {date}
+whatsPlayingIntent what films is on at the {location} {date}
+whatsPlayingIntent what films is on at {location}
+whatsPlayingIntent what films is on at {location} on the {date}
+whatsPlayingIntent what films is on at {location} on {date}
+whatsPlayingIntent what films is on at {location} {date}
+whatsPlayingIntent what films is on in the {location}
+whatsPlayingIntent what films is on in the {location} on the {date}
+whatsPlayingIntent what films is on in the {location} on {date}
+whatsPlayingIntent what films is on in the {location} {date}
+whatsPlayingIntent what films is on in {location}
+whatsPlayingIntent what films is on in {location} on the {date}
+whatsPlayingIntent what films is on in {location} on {date}
+whatsPlayingIntent what films is on in {location} {date}
+whatsPlayingIntent what films is on on the {date}
+whatsPlayingIntent what films is on on {date}
+whatsPlayingIntent what films is on the {location}
+whatsPlayingIntent what films is on the {location} on the {date}
+whatsPlayingIntent what films is on the {location} on {date}
+whatsPlayingIntent what films is on the {location} {date}
+whatsPlayingIntent what films is on {date}
+whatsPlayingIntent what films is on {location}
+whatsPlayingIntent what films is on {location} on the {date}
+whatsPlayingIntent what films is on {location} on {date}
+whatsPlayingIntent what films is on {location} {date}
+whatsPlayingIntent what films is playing
+whatsPlayingIntent what films is playing at the {location}
+whatsPlayingIntent what films is playing at the {location} on the {date}
+whatsPlayingIntent what films is playing at the {location} on {date}
+whatsPlayingIntent what films is playing at the {location} {date}
+whatsPlayingIntent what films is playing at {location}
+whatsPlayingIntent what films is playing at {location} on the {date}
+whatsPlayingIntent what films is playing at {location} on {date}
+whatsPlayingIntent what films is playing at {location} {date}
+whatsPlayingIntent what films is playing in the {location}
+whatsPlayingIntent what films is playing in the {location} on the {date}
+whatsPlayingIntent what films is playing in the {location} on {date}
+whatsPlayingIntent what films is playing in the {location} {date}
+whatsPlayingIntent what films is playing in {location}
+whatsPlayingIntent what films is playing in {location} on the {date}
+whatsPlayingIntent what films is playing in {location} on {date}
+whatsPlayingIntent what films is playing in {location} {date}
+whatsPlayingIntent what films is playing on the {date}
+whatsPlayingIntent what films is playing on {date}
+whatsPlayingIntent what films is playing the {location}
+whatsPlayingIntent what films is playing the {location} on the {date}
+whatsPlayingIntent what films is playing the {location} on {date}
+whatsPlayingIntent what films is playing the {location} {date}
+whatsPlayingIntent what films is playing {date}
+whatsPlayingIntent what films is playing {location}
+whatsPlayingIntent what films is playing {location} on the {date}
+whatsPlayingIntent what films is playing {location} on {date}
+whatsPlayingIntent what films is playing {location} {date}
+whatsPlayingIntent what films is showing
+whatsPlayingIntent what films is showing at the {location}
+whatsPlayingIntent what films is showing at the {location} on the {date}
+whatsPlayingIntent what films is showing at the {location} on {date}
+whatsPlayingIntent what films is showing at the {location} {date}
+whatsPlayingIntent what films is showing at {location}
+whatsPlayingIntent what films is showing at {location} on the {date}
+whatsPlayingIntent what films is showing at {location} on {date}
+whatsPlayingIntent what films is showing at {location} {date}
+whatsPlayingIntent what films is showing in the {location}
+whatsPlayingIntent what films is showing in the {location} on the {date}
+whatsPlayingIntent what films is showing in the {location} on {date}
+whatsPlayingIntent what films is showing in the {location} {date}
+whatsPlayingIntent what films is showing in {location}
+whatsPlayingIntent what films is showing in {location} on the {date}
+whatsPlayingIntent what films is showing in {location} on {date}
+whatsPlayingIntent what films is showing in {location} {date}
+whatsPlayingIntent what films is showing on the {date}
+whatsPlayingIntent what films is showing on {date}
+whatsPlayingIntent what films is showing the {location}
+whatsPlayingIntent what films is showing the {location} on the {date}
+whatsPlayingIntent what films is showing the {location} on {date}
+whatsPlayingIntent what films is showing the {location} {date}
+whatsPlayingIntent what films is showing {date}
+whatsPlayingIntent what films is showing {location}
+whatsPlayingIntent what films is showing {location} on the {date}
+whatsPlayingIntent what films is showing {location} on {date}
+whatsPlayingIntent what films is showing {location} {date}
+whatsPlayingIntent what is on
+whatsPlayingIntent what is on at the {location}
+whatsPlayingIntent what is on at the {location} on the {date}
+whatsPlayingIntent what is on at the {location} on {date}
+whatsPlayingIntent what is on at the {location} {date}
 whatsPlayingIntent what is on at {location}
+whatsPlayingIntent what is on at {location} on the {date}
+whatsPlayingIntent what is on at {location} on {date}
+whatsPlayingIntent what is on at {location} {date}
+whatsPlayingIntent what is on in the {location}
+whatsPlayingIntent what is on in the {location} on the {date}
+whatsPlayingIntent what is on in the {location} on {date}
+whatsPlayingIntent what is on in the {location} {date}
+whatsPlayingIntent what is on in {location}
+whatsPlayingIntent what is on in {location} on the {date}
+whatsPlayingIntent what is on in {location} on {date}
+whatsPlayingIntent what is on in {location} {date}
+whatsPlayingIntent what is on on the {date}
+whatsPlayingIntent what is on on {date}
+whatsPlayingIntent what is on the {location}
+whatsPlayingIntent what is on the {location} on the {date}
+whatsPlayingIntent what is on the {location} on {date}
+whatsPlayingIntent what is on the {location} {date}
+whatsPlayingIntent what is on {date}
+whatsPlayingIntent what is on {location}
+whatsPlayingIntent what is on {location} on the {date}
+whatsPlayingIntent what is on {location} on {date}
+whatsPlayingIntent what is on {location} {date}
+whatsPlayingIntent what is playing
+whatsPlayingIntent what is playing at the {location}
+whatsPlayingIntent what is playing at the {location} on the {date}
+whatsPlayingIntent what is playing at the {location} on {date}
+whatsPlayingIntent what is playing at the {location} {date}
 whatsPlayingIntent what is playing at {location}
+whatsPlayingIntent what is playing at {location} on the {date}
+whatsPlayingIntent what is playing at {location} on {date}
+whatsPlayingIntent what is playing at {location} {date}
+whatsPlayingIntent what is playing in the {location}
+whatsPlayingIntent what is playing in the {location} on the {date}
+whatsPlayingIntent what is playing in the {location} on {date}
+whatsPlayingIntent what is playing in the {location} {date}
 whatsPlayingIntent what is playing in {location}
+whatsPlayingIntent what is playing in {location} on the {date}
+whatsPlayingIntent what is playing in {location} on {date}
+whatsPlayingIntent what is playing in {location} {date}
+whatsPlayingIntent what is playing on the {date}
+whatsPlayingIntent what is playing on {date}
+whatsPlayingIntent what is playing the {location}
+whatsPlayingIntent what is playing the {location} on the {date}
+whatsPlayingIntent what is playing the {location} on {date}
+whatsPlayingIntent what is playing the {location} {date}
+whatsPlayingIntent what is playing {date}
+whatsPlayingIntent what is playing {location}
+whatsPlayingIntent what is playing {location} on the {date}
+whatsPlayingIntent what is playing {location} on {date}
+whatsPlayingIntent what is playing {location} {date}
+whatsPlayingIntent what is sauna
+whatsPlayingIntent what is sauna at the {location}
+whatsPlayingIntent what is sauna at the {location} on the {date}
+whatsPlayingIntent what is sauna at the {location} on {date}
+whatsPlayingIntent what is sauna at the {location} {date}
+whatsPlayingIntent what is sauna at {location}
+whatsPlayingIntent what is sauna at {location} on the {date}
+whatsPlayingIntent what is sauna at {location} on {date}
+whatsPlayingIntent what is sauna at {location} {date}
+whatsPlayingIntent what is sauna in the {location}
+whatsPlayingIntent what is sauna in the {location} on the {date}
+whatsPlayingIntent what is sauna in the {location} on {date}
+whatsPlayingIntent what is sauna in the {location} {date}
+whatsPlayingIntent what is sauna in {location}
+whatsPlayingIntent what is sauna in {location} on the {date}
+whatsPlayingIntent what is sauna in {location} on {date}
+whatsPlayingIntent what is sauna in {location} {date}
+whatsPlayingIntent what is sauna on the {date}
+whatsPlayingIntent what is sauna on {date}
+whatsPlayingIntent what is sauna the {location}
+whatsPlayingIntent what is sauna the {location} on the {date}
+whatsPlayingIntent what is sauna the {location} on {date}
+whatsPlayingIntent what is sauna the {location} {date}
+whatsPlayingIntent what is sauna {date}
 whatsPlayingIntent what is sauna {location}
+whatsPlayingIntent what is sauna {location} on the {date}
+whatsPlayingIntent what is sauna {location} on {date}
+whatsPlayingIntent what is sauna {location} {date}
+whatsPlayingIntent what is showing
+whatsPlayingIntent what is showing at the {location}
+whatsPlayingIntent what is showing at the {location} on the {date}
+whatsPlayingIntent what is showing at the {location} on {date}
+whatsPlayingIntent what is showing at the {location} {date}
 whatsPlayingIntent what is showing at {location}
+whatsPlayingIntent what is showing at {location} on the {date}
+whatsPlayingIntent what is showing at {location} on {date}
+whatsPlayingIntent what is showing at {location} {date}
+whatsPlayingIntent what is showing in the {location}
+whatsPlayingIntent what is showing in the {location} on the {date}
+whatsPlayingIntent what is showing in the {location} on {date}
+whatsPlayingIntent what is showing in the {location} {date}
 whatsPlayingIntent what is showing in {location}
+whatsPlayingIntent what is showing in {location} on the {date}
+whatsPlayingIntent what is showing in {location} on {date}
+whatsPlayingIntent what is showing in {location} {date}
+whatsPlayingIntent what is showing on the {date}
+whatsPlayingIntent what is showing on {date}
+whatsPlayingIntent what is showing the {location}
+whatsPlayingIntent what is showing the {location} on the {date}
+whatsPlayingIntent what is showing the {location} on {date}
+whatsPlayingIntent what is showing the {location} {date}
+whatsPlayingIntent what is showing {date}
+whatsPlayingIntent what is showing {location}
+whatsPlayingIntent what is showing {location} on the {date}
+whatsPlayingIntent what is showing {location} on {date}
+whatsPlayingIntent what is showing {location} {date}
+whatsPlayingIntent what movies are on
+whatsPlayingIntent what movies are on at the {location}
 whatsPlayingIntent what movies are on at the {location} on the {date}
 whatsPlayingIntent what movies are on at the {location} on {date}
 whatsPlayingIntent what movies are on at the {location} {date}
@@ -21,43 +299,610 @@ whatsPlayingIntent what movies are on at {location}
 whatsPlayingIntent what movies are on at {location} on the {date}
 whatsPlayingIntent what movies are on at {location} on {date}
 whatsPlayingIntent what movies are on at {location} {date}
+whatsPlayingIntent what movies are on in the {location}
+whatsPlayingIntent what movies are on in the {location} on the {date}
+whatsPlayingIntent what movies are on in the {location} on {date}
+whatsPlayingIntent what movies are on in the {location} {date}
 whatsPlayingIntent what movies are on in {location}
 whatsPlayingIntent what movies are on in {location} on the {date}
 whatsPlayingIntent what movies are on in {location} on {date}
 whatsPlayingIntent what movies are on in {location} {date}
+whatsPlayingIntent what movies are on on the {date}
+whatsPlayingIntent what movies are on on {date}
+whatsPlayingIntent what movies are on the {location}
+whatsPlayingIntent what movies are on the {location} on the {date}
+whatsPlayingIntent what movies are on the {location} on {date}
+whatsPlayingIntent what movies are on the {location} {date}
+whatsPlayingIntent what movies are on {date}
+whatsPlayingIntent what movies are on {location}
+whatsPlayingIntent what movies are on {location} on the {date}
+whatsPlayingIntent what movies are on {location} on {date}
+whatsPlayingIntent what movies are on {location} {date}
+whatsPlayingIntent what movies are playing
+whatsPlayingIntent what movies are playing at the {location}
 whatsPlayingIntent what movies are playing at the {location} on the {date}
 whatsPlayingIntent what movies are playing at the {location} on {date}
 whatsPlayingIntent what movies are playing at the {location} {date}
+whatsPlayingIntent what movies are playing at {location}
 whatsPlayingIntent what movies are playing at {location} on the {date}
 whatsPlayingIntent what movies are playing at {location} on {date}
 whatsPlayingIntent what movies are playing at {location} {date}
+whatsPlayingIntent what movies are playing in the {location}
+whatsPlayingIntent what movies are playing in the {location} on the {date}
+whatsPlayingIntent what movies are playing in the {location} on {date}
+whatsPlayingIntent what movies are playing in the {location} {date}
+whatsPlayingIntent what movies are playing in {location}
 whatsPlayingIntent what movies are playing in {location} on the {date}
 whatsPlayingIntent what movies are playing in {location} on {date}
 whatsPlayingIntent what movies are playing in {location} {date}
+whatsPlayingIntent what movies are playing on the {date}
+whatsPlayingIntent what movies are playing on {date}
+whatsPlayingIntent what movies are playing the {location}
+whatsPlayingIntent what movies are playing the {location} on the {date}
+whatsPlayingIntent what movies are playing the {location} on {date}
+whatsPlayingIntent what movies are playing the {location} {date}
+whatsPlayingIntent what movies are playing {date}
+whatsPlayingIntent what movies are playing {location}
+whatsPlayingIntent what movies are playing {location} on the {date}
+whatsPlayingIntent what movies are playing {location} on {date}
+whatsPlayingIntent what movies are playing {location} {date}
+whatsPlayingIntent what movies are showing
+whatsPlayingIntent what movies are showing at the {location}
+whatsPlayingIntent what movies are showing at the {location} on the {date}
+whatsPlayingIntent what movies are showing at the {location} on {date}
+whatsPlayingIntent what movies are showing at the {location} {date}
 whatsPlayingIntent what movies are showing at {location}
+whatsPlayingIntent what movies are showing at {location} on the {date}
+whatsPlayingIntent what movies are showing at {location} on {date}
+whatsPlayingIntent what movies are showing at {location} {date}
+whatsPlayingIntent what movies are showing in the {location}
+whatsPlayingIntent what movies are showing in the {location} on the {date}
+whatsPlayingIntent what movies are showing in the {location} on {date}
+whatsPlayingIntent what movies are showing in the {location} {date}
 whatsPlayingIntent what movies are showing in {location}
+whatsPlayingIntent what movies are showing in {location} on the {date}
+whatsPlayingIntent what movies are showing in {location} on {date}
+whatsPlayingIntent what movies are showing in {location} {date}
+whatsPlayingIntent what movies are showing on the {date}
+whatsPlayingIntent what movies are showing on {date}
+whatsPlayingIntent what movies are showing the {location}
+whatsPlayingIntent what movies are showing the {location} on the {date}
+whatsPlayingIntent what movies are showing the {location} on {date}
+whatsPlayingIntent what movies are showing the {location} {date}
+whatsPlayingIntent what movies are showing {date}
+whatsPlayingIntent what movies are showing {location}
+whatsPlayingIntent what movies are showing {location} on the {date}
+whatsPlayingIntent what movies are showing {location} on {date}
+whatsPlayingIntent what movies are showing {location} {date}
+whatsPlayingIntent what movies is on
+whatsPlayingIntent what movies is on at the {location}
+whatsPlayingIntent what movies is on at the {location} on the {date}
+whatsPlayingIntent what movies is on at the {location} on {date}
+whatsPlayingIntent what movies is on at the {location} {date}
+whatsPlayingIntent what movies is on at {location}
+whatsPlayingIntent what movies is on at {location} on the {date}
+whatsPlayingIntent what movies is on at {location} on {date}
+whatsPlayingIntent what movies is on at {location} {date}
+whatsPlayingIntent what movies is on in the {location}
+whatsPlayingIntent what movies is on in the {location} on the {date}
+whatsPlayingIntent what movies is on in the {location} on {date}
+whatsPlayingIntent what movies is on in the {location} {date}
+whatsPlayingIntent what movies is on in {location}
+whatsPlayingIntent what movies is on in {location} on the {date}
+whatsPlayingIntent what movies is on in {location} on {date}
+whatsPlayingIntent what movies is on in {location} {date}
+whatsPlayingIntent what movies is on on the {date}
+whatsPlayingIntent what movies is on on {date}
+whatsPlayingIntent what movies is on the {location}
+whatsPlayingIntent what movies is on the {location} on the {date}
+whatsPlayingIntent what movies is on the {location} on {date}
+whatsPlayingIntent what movies is on the {location} {date}
+whatsPlayingIntent what movies is on {date}
+whatsPlayingIntent what movies is on {location}
+whatsPlayingIntent what movies is on {location} on the {date}
+whatsPlayingIntent what movies is on {location} on {date}
+whatsPlayingIntent what movies is on {location} {date}
+whatsPlayingIntent what movies is playing
+whatsPlayingIntent what movies is playing at the {location}
+whatsPlayingIntent what movies is playing at the {location} on the {date}
+whatsPlayingIntent what movies is playing at the {location} on {date}
+whatsPlayingIntent what movies is playing at the {location} {date}
+whatsPlayingIntent what movies is playing at {location}
+whatsPlayingIntent what movies is playing at {location} on the {date}
+whatsPlayingIntent what movies is playing at {location} on {date}
+whatsPlayingIntent what movies is playing at {location} {date}
+whatsPlayingIntent what movies is playing in the {location}
+whatsPlayingIntent what movies is playing in the {location} on the {date}
+whatsPlayingIntent what movies is playing in the {location} on {date}
+whatsPlayingIntent what movies is playing in the {location} {date}
+whatsPlayingIntent what movies is playing in {location}
+whatsPlayingIntent what movies is playing in {location} on the {date}
+whatsPlayingIntent what movies is playing in {location} on {date}
+whatsPlayingIntent what movies is playing in {location} {date}
+whatsPlayingIntent what movies is playing on the {date}
+whatsPlayingIntent what movies is playing on {date}
+whatsPlayingIntent what movies is playing the {location}
+whatsPlayingIntent what movies is playing the {location} on the {date}
+whatsPlayingIntent what movies is playing the {location} on {date}
+whatsPlayingIntent what movies is playing the {location} {date}
+whatsPlayingIntent what movies is playing {date}
+whatsPlayingIntent what movies is playing {location}
+whatsPlayingIntent what movies is playing {location} on the {date}
+whatsPlayingIntent what movies is playing {location} on {date}
+whatsPlayingIntent what movies is playing {location} {date}
+whatsPlayingIntent what movies is showing
+whatsPlayingIntent what movies is showing at the {location}
+whatsPlayingIntent what movies is showing at the {location} on the {date}
+whatsPlayingIntent what movies is showing at the {location} on {date}
+whatsPlayingIntent what movies is showing at the {location} {date}
+whatsPlayingIntent what movies is showing at {location}
+whatsPlayingIntent what movies is showing at {location} on the {date}
+whatsPlayingIntent what movies is showing at {location} on {date}
+whatsPlayingIntent what movies is showing at {location} {date}
+whatsPlayingIntent what movies is showing in the {location}
+whatsPlayingIntent what movies is showing in the {location} on the {date}
+whatsPlayingIntent what movies is showing in the {location} on {date}
+whatsPlayingIntent what movies is showing in the {location} {date}
+whatsPlayingIntent what movies is showing in {location}
+whatsPlayingIntent what movies is showing in {location} on the {date}
+whatsPlayingIntent what movies is showing in {location} on {date}
+whatsPlayingIntent what movies is showing in {location} {date}
+whatsPlayingIntent what movies is showing on the {date}
+whatsPlayingIntent what movies is showing on {date}
+whatsPlayingIntent what movies is showing the {location}
+whatsPlayingIntent what movies is showing the {location} on the {date}
+whatsPlayingIntent what movies is showing the {location} on {date}
+whatsPlayingIntent what movies is showing the {location} {date}
+whatsPlayingIntent what movies is showing {date}
+whatsPlayingIntent what movies is showing {location}
+whatsPlayingIntent what movies is showing {location} on the {date}
+whatsPlayingIntent what movies is showing {location} on {date}
+whatsPlayingIntent what movies is showing {location} {date}
+whatsPlayingIntent what's on
 whatsPlayingIntent what's on at the {location}
+whatsPlayingIntent what's on at the {location} on the {date}
+whatsPlayingIntent what's on at the {location} on {date}
+whatsPlayingIntent what's on at the {location} {date}
 whatsPlayingIntent what's on at {location}
 whatsPlayingIntent what's on at {location} on the {date}
 whatsPlayingIntent what's on at {location} on {date}
 whatsPlayingIntent what's on at {location} {date}
+whatsPlayingIntent what's on in the {location}
+whatsPlayingIntent what's on in the {location} on the {date}
+whatsPlayingIntent what's on in the {location} on {date}
+whatsPlayingIntent what's on in the {location} {date}
 whatsPlayingIntent what's on in {location}
+whatsPlayingIntent what's on in {location} on the {date}
+whatsPlayingIntent what's on in {location} on {date}
+whatsPlayingIntent what's on in {location} {date}
+whatsPlayingIntent what's on on the {date}
+whatsPlayingIntent what's on on {date}
+whatsPlayingIntent what's on the {location}
+whatsPlayingIntent what's on the {location} on the {date}
+whatsPlayingIntent what's on the {location} on {date}
+whatsPlayingIntent what's on the {location} {date}
+whatsPlayingIntent what's on {date}
+whatsPlayingIntent what's on {location}
+whatsPlayingIntent what's on {location} on the {date}
+whatsPlayingIntent what's on {location} on {date}
+whatsPlayingIntent what's on {location} {date}
+whatsPlayingIntent what's playing
+whatsPlayingIntent what's playing at the {location}
+whatsPlayingIntent what's playing at the {location} on the {date}
+whatsPlayingIntent what's playing at the {location} on {date}
+whatsPlayingIntent what's playing at the {location} {date}
 whatsPlayingIntent what's playing at {location}
+whatsPlayingIntent what's playing at {location} on the {date}
+whatsPlayingIntent what's playing at {location} on {date}
+whatsPlayingIntent what's playing at {location} {date}
+whatsPlayingIntent what's playing in the {location}
+whatsPlayingIntent what's playing in the {location} on the {date}
+whatsPlayingIntent what's playing in the {location} on {date}
+whatsPlayingIntent what's playing in the {location} {date}
 whatsPlayingIntent what's playing in {location}
 whatsPlayingIntent what's playing in {location} on the {date}
 whatsPlayingIntent what's playing in {location} on {date}
 whatsPlayingIntent what's playing in {location} {date}
+whatsPlayingIntent what's playing on the {date}
+whatsPlayingIntent what's playing on {date}
+whatsPlayingIntent what's playing the {location}
+whatsPlayingIntent what's playing the {location} on the {date}
+whatsPlayingIntent what's playing the {location} on {date}
+whatsPlayingIntent what's playing the {location} {date}
+whatsPlayingIntent what's playing {date}
+whatsPlayingIntent what's playing {location}
+whatsPlayingIntent what's playing {location} on the {date}
+whatsPlayingIntent what's playing {location} on {date}
+whatsPlayingIntent what's playing {location} {date}
+whatsPlayingIntent what's sauna
+whatsPlayingIntent what's sauna at the {location}
+whatsPlayingIntent what's sauna at the {location} on the {date}
+whatsPlayingIntent what's sauna at the {location} on {date}
+whatsPlayingIntent what's sauna at the {location} {date}
+whatsPlayingIntent what's sauna at {location}
+whatsPlayingIntent what's sauna at {location} on the {date}
+whatsPlayingIntent what's sauna at {location} on {date}
+whatsPlayingIntent what's sauna at {location} {date}
+whatsPlayingIntent what's sauna in the {location}
+whatsPlayingIntent what's sauna in the {location} on the {date}
+whatsPlayingIntent what's sauna in the {location} on {date}
+whatsPlayingIntent what's sauna in the {location} {date}
+whatsPlayingIntent what's sauna in {location}
+whatsPlayingIntent what's sauna in {location} on the {date}
+whatsPlayingIntent what's sauna in {location} on {date}
+whatsPlayingIntent what's sauna in {location} {date}
+whatsPlayingIntent what's sauna on the {date}
+whatsPlayingIntent what's sauna on {date}
+whatsPlayingIntent what's sauna the {location}
+whatsPlayingIntent what's sauna the {location} on the {date}
+whatsPlayingIntent what's sauna the {location} on {date}
+whatsPlayingIntent what's sauna the {location} {date}
+whatsPlayingIntent what's sauna {date}
 whatsPlayingIntent what's sauna {location}
+whatsPlayingIntent what's sauna {location} on the {date}
+whatsPlayingIntent what's sauna {location} on {date}
+whatsPlayingIntent what's sauna {location} {date}
+whatsPlayingIntent what's showing
+whatsPlayingIntent what's showing at the {location}
+whatsPlayingIntent what's showing at the {location} on the {date}
+whatsPlayingIntent what's showing at the {location} on {date}
+whatsPlayingIntent what's showing at the {location} {date}
 whatsPlayingIntent what's showing at {location}
+whatsPlayingIntent what's showing at {location} on the {date}
+whatsPlayingIntent what's showing at {location} on {date}
+whatsPlayingIntent what's showing at {location} {date}
+whatsPlayingIntent what's showing in the {location}
+whatsPlayingIntent what's showing in the {location} on the {date}
+whatsPlayingIntent what's showing in the {location} on {date}
+whatsPlayingIntent what's showing in the {location} {date}
 whatsPlayingIntent what's showing in {location}
 whatsPlayingIntent what's showing in {location} on the {date}
+whatsPlayingIntent what's showing in {location} on {date}
+whatsPlayingIntent what's showing in {location} {date}
+whatsPlayingIntent what's showing on the {date}
+whatsPlayingIntent what's showing on {date}
+whatsPlayingIntent what's showing the {location}
+whatsPlayingIntent what's showing the {location} on the {date}
+whatsPlayingIntent what's showing the {location} on {date}
+whatsPlayingIntent what's showing the {location} {date}
+whatsPlayingIntent what's showing {date}
+whatsPlayingIntent what's showing {location}
+whatsPlayingIntent what's showing {location} on the {date}
+whatsPlayingIntent what's showing {location} on {date}
+whatsPlayingIntent what's showing {location} {date}
+whatsPlayingIntent which films are on
+whatsPlayingIntent which films are on at the {location}
+whatsPlayingIntent which films are on at the {location} on the {date}
+whatsPlayingIntent which films are on at the {location} on {date}
+whatsPlayingIntent which films are on at the {location} {date}
+whatsPlayingIntent which films are on at {location}
+whatsPlayingIntent which films are on at {location} on the {date}
+whatsPlayingIntent which films are on at {location} on {date}
+whatsPlayingIntent which films are on at {location} {date}
+whatsPlayingIntent which films are on in the {location}
+whatsPlayingIntent which films are on in the {location} on the {date}
+whatsPlayingIntent which films are on in the {location} on {date}
+whatsPlayingIntent which films are on in the {location} {date}
+whatsPlayingIntent which films are on in {location}
+whatsPlayingIntent which films are on in {location} on the {date}
+whatsPlayingIntent which films are on in {location} on {date}
+whatsPlayingIntent which films are on in {location} {date}
+whatsPlayingIntent which films are on on the {date}
+whatsPlayingIntent which films are on on {date}
+whatsPlayingIntent which films are on the {location}
+whatsPlayingIntent which films are on the {location} on the {date}
+whatsPlayingIntent which films are on the {location} on {date}
+whatsPlayingIntent which films are on the {location} {date}
+whatsPlayingIntent which films are on {date}
+whatsPlayingIntent which films are on {location}
+whatsPlayingIntent which films are on {location} on the {date}
+whatsPlayingIntent which films are on {location} on {date}
+whatsPlayingIntent which films are on {location} {date}
+whatsPlayingIntent which films are playing
+whatsPlayingIntent which films are playing at the {location}
+whatsPlayingIntent which films are playing at the {location} on the {date}
+whatsPlayingIntent which films are playing at the {location} on {date}
+whatsPlayingIntent which films are playing at the {location} {date}
+whatsPlayingIntent which films are playing at {location}
+whatsPlayingIntent which films are playing at {location} on the {date}
+whatsPlayingIntent which films are playing at {location} on {date}
+whatsPlayingIntent which films are playing at {location} {date}
+whatsPlayingIntent which films are playing in the {location}
+whatsPlayingIntent which films are playing in the {location} on the {date}
+whatsPlayingIntent which films are playing in the {location} on {date}
+whatsPlayingIntent which films are playing in the {location} {date}
+whatsPlayingIntent which films are playing in {location}
+whatsPlayingIntent which films are playing in {location} on the {date}
+whatsPlayingIntent which films are playing in {location} on {date}
+whatsPlayingIntent which films are playing in {location} {date}
+whatsPlayingIntent which films are playing on the {date}
+whatsPlayingIntent which films are playing on {date}
+whatsPlayingIntent which films are playing the {location}
+whatsPlayingIntent which films are playing the {location} on the {date}
+whatsPlayingIntent which films are playing the {location} on {date}
+whatsPlayingIntent which films are playing the {location} {date}
+whatsPlayingIntent which films are playing {date}
+whatsPlayingIntent which films are playing {location}
+whatsPlayingIntent which films are playing {location} on the {date}
+whatsPlayingIntent which films are playing {location} on {date}
+whatsPlayingIntent which films are playing {location} {date}
+whatsPlayingIntent which films are showing
+whatsPlayingIntent which films are showing at the {location}
+whatsPlayingIntent which films are showing at the {location} on the {date}
+whatsPlayingIntent which films are showing at the {location} on {date}
+whatsPlayingIntent which films are showing at the {location} {date}
 whatsPlayingIntent which films are showing at {location}
 whatsPlayingIntent which films are showing at {location} on the {date}
 whatsPlayingIntent which films are showing at {location} on {date}
 whatsPlayingIntent which films are showing at {location} {date}
+whatsPlayingIntent which films are showing in the {location}
+whatsPlayingIntent which films are showing in the {location} on the {date}
+whatsPlayingIntent which films are showing in the {location} on {date}
+whatsPlayingIntent which films are showing in the {location} {date}
 whatsPlayingIntent which films are showing in {location}
 whatsPlayingIntent which films are showing in {location} on the {date}
 whatsPlayingIntent which films are showing in {location} on {date}
 whatsPlayingIntent which films are showing in {location} {date}
+whatsPlayingIntent which films are showing on the {date}
+whatsPlayingIntent which films are showing on {date}
+whatsPlayingIntent which films are showing the {location}
+whatsPlayingIntent which films are showing the {location} on the {date}
+whatsPlayingIntent which films are showing the {location} on {date}
+whatsPlayingIntent which films are showing the {location} {date}
+whatsPlayingIntent which films are showing {date}
+whatsPlayingIntent which films are showing {location}
+whatsPlayingIntent which films are showing {location} on the {date}
+whatsPlayingIntent which films are showing {location} on {date}
+whatsPlayingIntent which films are showing {location} {date}
+whatsPlayingIntent which films is on
+whatsPlayingIntent which films is on at the {location}
+whatsPlayingIntent which films is on at the {location} on the {date}
+whatsPlayingIntent which films is on at the {location} on {date}
+whatsPlayingIntent which films is on at the {location} {date}
+whatsPlayingIntent which films is on at {location}
+whatsPlayingIntent which films is on at {location} on the {date}
+whatsPlayingIntent which films is on at {location} on {date}
+whatsPlayingIntent which films is on at {location} {date}
+whatsPlayingIntent which films is on in the {location}
+whatsPlayingIntent which films is on in the {location} on the {date}
+whatsPlayingIntent which films is on in the {location} on {date}
+whatsPlayingIntent which films is on in the {location} {date}
+whatsPlayingIntent which films is on in {location}
+whatsPlayingIntent which films is on in {location} on the {date}
+whatsPlayingIntent which films is on in {location} on {date}
+whatsPlayingIntent which films is on in {location} {date}
+whatsPlayingIntent which films is on on the {date}
+whatsPlayingIntent which films is on on {date}
+whatsPlayingIntent which films is on the {location}
+whatsPlayingIntent which films is on the {location} on the {date}
+whatsPlayingIntent which films is on the {location} on {date}
+whatsPlayingIntent which films is on the {location} {date}
+whatsPlayingIntent which films is on {date}
+whatsPlayingIntent which films is on {location}
+whatsPlayingIntent which films is on {location} on the {date}
+whatsPlayingIntent which films is on {location} on {date}
+whatsPlayingIntent which films is on {location} {date}
+whatsPlayingIntent which films is playing
+whatsPlayingIntent which films is playing at the {location}
+whatsPlayingIntent which films is playing at the {location} on the {date}
+whatsPlayingIntent which films is playing at the {location} on {date}
+whatsPlayingIntent which films is playing at the {location} {date}
+whatsPlayingIntent which films is playing at {location}
+whatsPlayingIntent which films is playing at {location} on the {date}
+whatsPlayingIntent which films is playing at {location} on {date}
+whatsPlayingIntent which films is playing at {location} {date}
+whatsPlayingIntent which films is playing in the {location}
+whatsPlayingIntent which films is playing in the {location} on the {date}
+whatsPlayingIntent which films is playing in the {location} on {date}
+whatsPlayingIntent which films is playing in the {location} {date}
+whatsPlayingIntent which films is playing in {location}
+whatsPlayingIntent which films is playing in {location} on the {date}
+whatsPlayingIntent which films is playing in {location} on {date}
+whatsPlayingIntent which films is playing in {location} {date}
+whatsPlayingIntent which films is playing on the {date}
+whatsPlayingIntent which films is playing on {date}
+whatsPlayingIntent which films is playing the {location}
+whatsPlayingIntent which films is playing the {location} on the {date}
+whatsPlayingIntent which films is playing the {location} on {date}
+whatsPlayingIntent which films is playing the {location} {date}
+whatsPlayingIntent which films is playing {date}
+whatsPlayingIntent which films is playing {location}
+whatsPlayingIntent which films is playing {location} on the {date}
+whatsPlayingIntent which films is playing {location} on {date}
+whatsPlayingIntent which films is playing {location} {date}
+whatsPlayingIntent which films is showing
+whatsPlayingIntent which films is showing at the {location}
+whatsPlayingIntent which films is showing at the {location} on the {date}
+whatsPlayingIntent which films is showing at the {location} on {date}
+whatsPlayingIntent which films is showing at the {location} {date}
+whatsPlayingIntent which films is showing at {location}
+whatsPlayingIntent which films is showing at {location} on the {date}
+whatsPlayingIntent which films is showing at {location} on {date}
+whatsPlayingIntent which films is showing at {location} {date}
+whatsPlayingIntent which films is showing in the {location}
+whatsPlayingIntent which films is showing in the {location} on the {date}
+whatsPlayingIntent which films is showing in the {location} on {date}
+whatsPlayingIntent which films is showing in the {location} {date}
+whatsPlayingIntent which films is showing in {location}
+whatsPlayingIntent which films is showing in {location} on the {date}
+whatsPlayingIntent which films is showing in {location} on {date}
+whatsPlayingIntent which films is showing in {location} {date}
+whatsPlayingIntent which films is showing on the {date}
+whatsPlayingIntent which films is showing on {date}
+whatsPlayingIntent which films is showing the {location}
+whatsPlayingIntent which films is showing the {location} on the {date}
+whatsPlayingIntent which films is showing the {location} on {date}
+whatsPlayingIntent which films is showing the {location} {date}
+whatsPlayingIntent which films is showing {date}
+whatsPlayingIntent which films is showing {location}
+whatsPlayingIntent which films is showing {location} on the {date}
+whatsPlayingIntent which films is showing {location} on {date}
+whatsPlayingIntent which films is showing {location} {date}
+whatsPlayingIntent which movies are on
+whatsPlayingIntent which movies are on at the {location}
+whatsPlayingIntent which movies are on at the {location} on the {date}
+whatsPlayingIntent which movies are on at the {location} on {date}
+whatsPlayingIntent which movies are on at the {location} {date}
+whatsPlayingIntent which movies are on at {location}
+whatsPlayingIntent which movies are on at {location} on the {date}
+whatsPlayingIntent which movies are on at {location} on {date}
+whatsPlayingIntent which movies are on at {location} {date}
+whatsPlayingIntent which movies are on in the {location}
+whatsPlayingIntent which movies are on in the {location} on the {date}
+whatsPlayingIntent which movies are on in the {location} on {date}
+whatsPlayingIntent which movies are on in the {location} {date}
+whatsPlayingIntent which movies are on in {location}
+whatsPlayingIntent which movies are on in {location} on the {date}
+whatsPlayingIntent which movies are on in {location} on {date}
+whatsPlayingIntent which movies are on in {location} {date}
+whatsPlayingIntent which movies are on on the {date}
+whatsPlayingIntent which movies are on on {date}
+whatsPlayingIntent which movies are on the {location}
+whatsPlayingIntent which movies are on the {location} on the {date}
+whatsPlayingIntent which movies are on the {location} on {date}
+whatsPlayingIntent which movies are on the {location} {date}
+whatsPlayingIntent which movies are on {date}
+whatsPlayingIntent which movies are on {location}
+whatsPlayingIntent which movies are on {location} on the {date}
+whatsPlayingIntent which movies are on {location} on {date}
+whatsPlayingIntent which movies are on {location} {date}
+whatsPlayingIntent which movies are playing
+whatsPlayingIntent which movies are playing at the {location}
+whatsPlayingIntent which movies are playing at the {location} on the {date}
+whatsPlayingIntent which movies are playing at the {location} on {date}
+whatsPlayingIntent which movies are playing at the {location} {date}
+whatsPlayingIntent which movies are playing at {location}
+whatsPlayingIntent which movies are playing at {location} on the {date}
+whatsPlayingIntent which movies are playing at {location} on {date}
+whatsPlayingIntent which movies are playing at {location} {date}
+whatsPlayingIntent which movies are playing in the {location}
+whatsPlayingIntent which movies are playing in the {location} on the {date}
+whatsPlayingIntent which movies are playing in the {location} on {date}
+whatsPlayingIntent which movies are playing in the {location} {date}
+whatsPlayingIntent which movies are playing in {location}
+whatsPlayingIntent which movies are playing in {location} on the {date}
+whatsPlayingIntent which movies are playing in {location} on {date}
+whatsPlayingIntent which movies are playing in {location} {date}
+whatsPlayingIntent which movies are playing on the {date}
+whatsPlayingIntent which movies are playing on {date}
+whatsPlayingIntent which movies are playing the {location}
+whatsPlayingIntent which movies are playing the {location} on the {date}
+whatsPlayingIntent which movies are playing the {location} on {date}
+whatsPlayingIntent which movies are playing the {location} {date}
+whatsPlayingIntent which movies are playing {date}
+whatsPlayingIntent which movies are playing {location}
+whatsPlayingIntent which movies are playing {location} on the {date}
+whatsPlayingIntent which movies are playing {location} on {date}
+whatsPlayingIntent which movies are playing {location} {date}
+whatsPlayingIntent which movies are showing
+whatsPlayingIntent which movies are showing at the {location}
+whatsPlayingIntent which movies are showing at the {location} on the {date}
+whatsPlayingIntent which movies are showing at the {location} on {date}
+whatsPlayingIntent which movies are showing at the {location} {date}
 whatsPlayingIntent which movies are showing at {location}
+whatsPlayingIntent which movies are showing at {location} on the {date}
+whatsPlayingIntent which movies are showing at {location} on {date}
+whatsPlayingIntent which movies are showing at {location} {date}
+whatsPlayingIntent which movies are showing in the {location}
+whatsPlayingIntent which movies are showing in the {location} on the {date}
+whatsPlayingIntent which movies are showing in the {location} on {date}
+whatsPlayingIntent which movies are showing in the {location} {date}
 whatsPlayingIntent which movies are showing in {location}
+whatsPlayingIntent which movies are showing in {location} on the {date}
+whatsPlayingIntent which movies are showing in {location} on {date}
+whatsPlayingIntent which movies are showing in {location} {date}
+whatsPlayingIntent which movies are showing on the {date}
+whatsPlayingIntent which movies are showing on {date}
+whatsPlayingIntent which movies are showing the {location}
+whatsPlayingIntent which movies are showing the {location} on the {date}
+whatsPlayingIntent which movies are showing the {location} on {date}
+whatsPlayingIntent which movies are showing the {location} {date}
+whatsPlayingIntent which movies are showing {date}
+whatsPlayingIntent which movies are showing {location}
+whatsPlayingIntent which movies are showing {location} on the {date}
+whatsPlayingIntent which movies are showing {location} on {date}
+whatsPlayingIntent which movies are showing {location} {date}
+whatsPlayingIntent which movies is on
+whatsPlayingIntent which movies is on at the {location}
+whatsPlayingIntent which movies is on at the {location} on the {date}
+whatsPlayingIntent which movies is on at the {location} on {date}
+whatsPlayingIntent which movies is on at the {location} {date}
+whatsPlayingIntent which movies is on at {location}
+whatsPlayingIntent which movies is on at {location} on the {date}
+whatsPlayingIntent which movies is on at {location} on {date}
+whatsPlayingIntent which movies is on at {location} {date}
+whatsPlayingIntent which movies is on in the {location}
+whatsPlayingIntent which movies is on in the {location} on the {date}
+whatsPlayingIntent which movies is on in the {location} on {date}
+whatsPlayingIntent which movies is on in the {location} {date}
+whatsPlayingIntent which movies is on in {location}
+whatsPlayingIntent which movies is on in {location} on the {date}
+whatsPlayingIntent which movies is on in {location} on {date}
+whatsPlayingIntent which movies is on in {location} {date}
+whatsPlayingIntent which movies is on on the {date}
+whatsPlayingIntent which movies is on on {date}
+whatsPlayingIntent which movies is on the {location}
+whatsPlayingIntent which movies is on the {location} on the {date}
+whatsPlayingIntent which movies is on the {location} on {date}
+whatsPlayingIntent which movies is on the {location} {date}
+whatsPlayingIntent which movies is on {date}
+whatsPlayingIntent which movies is on {location}
+whatsPlayingIntent which movies is on {location} on the {date}
+whatsPlayingIntent which movies is on {location} on {date}
+whatsPlayingIntent which movies is on {location} {date}
+whatsPlayingIntent which movies is playing
+whatsPlayingIntent which movies is playing at the {location}
+whatsPlayingIntent which movies is playing at the {location} on the {date}
+whatsPlayingIntent which movies is playing at the {location} on {date}
+whatsPlayingIntent which movies is playing at the {location} {date}
+whatsPlayingIntent which movies is playing at {location}
+whatsPlayingIntent which movies is playing at {location} on the {date}
+whatsPlayingIntent which movies is playing at {location} on {date}
+whatsPlayingIntent which movies is playing at {location} {date}
+whatsPlayingIntent which movies is playing in the {location}
+whatsPlayingIntent which movies is playing in the {location} on the {date}
+whatsPlayingIntent which movies is playing in the {location} on {date}
+whatsPlayingIntent which movies is playing in the {location} {date}
+whatsPlayingIntent which movies is playing in {location}
+whatsPlayingIntent which movies is playing in {location} on the {date}
+whatsPlayingIntent which movies is playing in {location} on {date}
+whatsPlayingIntent which movies is playing in {location} {date}
+whatsPlayingIntent which movies is playing on the {date}
+whatsPlayingIntent which movies is playing on {date}
+whatsPlayingIntent which movies is playing the {location}
+whatsPlayingIntent which movies is playing the {location} on the {date}
+whatsPlayingIntent which movies is playing the {location} on {date}
+whatsPlayingIntent which movies is playing the {location} {date}
+whatsPlayingIntent which movies is playing {date}
+whatsPlayingIntent which movies is playing {location}
+whatsPlayingIntent which movies is playing {location} on the {date}
+whatsPlayingIntent which movies is playing {location} on {date}
+whatsPlayingIntent which movies is playing {location} {date}
+whatsPlayingIntent which movies is showing
+whatsPlayingIntent which movies is showing at the {location}
+whatsPlayingIntent which movies is showing at the {location} on the {date}
+whatsPlayingIntent which movies is showing at the {location} on {date}
+whatsPlayingIntent which movies is showing at the {location} {date}
+whatsPlayingIntent which movies is showing at {location}
+whatsPlayingIntent which movies is showing at {location} on the {date}
+whatsPlayingIntent which movies is showing at {location} on {date}
+whatsPlayingIntent which movies is showing at {location} {date}
+whatsPlayingIntent which movies is showing in the {location}
+whatsPlayingIntent which movies is showing in the {location} on the {date}
+whatsPlayingIntent which movies is showing in the {location} on {date}
+whatsPlayingIntent which movies is showing in the {location} {date}
+whatsPlayingIntent which movies is showing in {location}
+whatsPlayingIntent which movies is showing in {location} on the {date}
+whatsPlayingIntent which movies is showing in {location} on {date}
+whatsPlayingIntent which movies is showing in {location} {date}
+whatsPlayingIntent which movies is showing on the {date}
+whatsPlayingIntent which movies is showing on {date}
+whatsPlayingIntent which movies is showing the {location}
+whatsPlayingIntent which movies is showing the {location} on the {date}
+whatsPlayingIntent which movies is showing the {location} on {date}
+whatsPlayingIntent which movies is showing the {location} {date}
+whatsPlayingIntent which movies is showing {date}
+whatsPlayingIntent which movies is showing {location}
+whatsPlayingIntent which movies is showing {location} on the {date}
+whatsPlayingIntent which movies is showing {location} on {date}
+whatsPlayingIntent which movies is showing {location} {date}
