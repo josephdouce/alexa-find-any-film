@@ -5,8 +5,8 @@ This is a skill that uses various API's to supply film data for a location and d
 # pylint: disable=R0201
 
 import datetime as dt
-import requests
 import os.path
+import requests
 from fuzzywuzzy import process
 from yaep import populate_env
 from yaep import env
@@ -62,7 +62,7 @@ class HelperClass(object):
         }
 
     def get_venue_id(self, location):
-        """" get venue id from api using location """        
+        """" get venue id from api using location """
         self.request_location = requests.get(
             'http://moviesapi.herokuapp.com/cinemas/find/' + location).json()
         if self.request_location == []:
@@ -130,7 +130,7 @@ class IntentsClass(HelperClass):
         if not location:
             speech_output = "Please provide a location or set a default one."
             reprompt_text = "Please provide a location or set a default one."
-        else:        
+        else:
             if 'value' in intent['slots']['date']:
                 from_date = intent['slots']['date']['value']
             else:
@@ -149,7 +149,7 @@ class IntentsClass(HelperClass):
         speechlet_response = Helper.build_speechlet_response(
             card_title, speech_output, reprompt_text, should_end_session)
         return Helper.build_response(self.session_attributes, speechlet_response)
-        
+
     def when_specific_film_playing_intent(self, intent, session):
         """ Gets the values from the session and prepares the speech to reply to the
         user.
@@ -166,7 +166,7 @@ class IntentsClass(HelperClass):
             speech_output = "I'm not sure what you would like to do. " \
                             "Please try again."
             reprompt_text = "I'm not sure what you would like to do."
-        else:        
+        else:
             if 'value' in intent['slots']['date']:
                 from_date = intent['slots']['date']['value']
             else:
@@ -198,6 +198,11 @@ class IntentsClass(HelperClass):
         """ Gets the values from the session and prepares the speech to reply to the
         user.
         """
+
+        try:
+            print "Your accessToken is: " + session['user']['accessToken']
+        except:
+            print "access token error"
 
         should_end_session = True
 
@@ -278,11 +283,15 @@ class IntentsClass(HelperClass):
 
 ENV_FILE = os.path.join(os.path.dirname(__file__), ".env")
 
+
 def setup_env():
+    """ setup env """
     os.environ['ENV_FILE'] = ENV_FILE
-    populate_env()    
+    populate_env()
+
 
 def verify_application_id(candidate):
+    """ verify app id """
     if env('SKILL_APPID'):
         try:
             print "Verifying application ID..."
@@ -294,7 +303,7 @@ def verify_application_id(candidate):
         except ValueError as e:
             print e.args[0]
             raise
-        
+
 # --------------- Secondary handlers ------------------
 
 Helper = HelperClass()
@@ -360,10 +369,11 @@ def on_session_ended(session_ended_request, session):
 # --------------- Main handler ------------------
 
 def lambda_handler(event, context):
+    """ main handler """
 
     appid = event['session']['application']['applicationId']
-    print("lambda_handler: applicationId=" + appid)
-    
+    print "lambda_handler: applicationId=" + appid
+
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
     etc.) The JSON body of the request is provided in the event parameter.
     """
@@ -374,18 +384,12 @@ def lambda_handler(event, context):
     prevent someone else from configuring a skill that sends requests to this
     function.
     """
-    
-    #Setup environment
-    setup_env()
-    
+
+    # Setup environment
+    #setup_env()
+
     # Verify the application ID is what the user expects
-    verify_application_id(appid)    
-    
-#    from mykeys import alexa_skill_id
-#
-#    if event['session']['application']['applicationId'] != \
-#            alexa_skill_id:
-#        raise ValueError("Invalid Application ID")
+    #verify_application_id(appid)
 
     if event['session']['new']:
         on_session_started({'requestId': event['request']['requestId']}, event['session'])
