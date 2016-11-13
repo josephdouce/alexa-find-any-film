@@ -15,7 +15,6 @@ from yaep import env
 
 # --------------- Helper class that builds all of the responses ----------------------
 
-
 class HelperClass(object):
     """ Helper class for building json responses """
 
@@ -94,7 +93,7 @@ class HelperClass(object):
 
         return self.imdb_rating
 
-    def get_showtimes(self, film, session):
+    def get_showtimes(self, film):
         """ get showtimes api using name """
         films_json = self.request_films.values()[0]['films']
 
@@ -121,15 +120,18 @@ class IntentsClass(HelperClass):
         """
 
         should_end_session = False
+        try:
+            if 'value' in intent['slots']['location']:
+                location = intent['slots']['location']['value']
+            else:
+                location = session['user']['accessToken']
+        except:
+            location = ""
 
-        if 'value' in intent['slots']['location']:
-            location = intent['slots']['location']['value']
-        elif env('DEFAULT_LOCATION'):
-            location = env('DEFAULT_LOCATION')
-
-        if not location:
-            speech_output = "Please provide a location or set a default one."
-            reprompt_text = "Please provide a location or set a default one."
+        if location == "":
+            card_title = "Locaton Not Specified"
+            speech_output = "Please provide a location or use account linking to set a default one."
+            reprompt_text = "Please provide a location or use account linking to set a default one."
         else:
             if 'value' in intent['slots']['date']:
                 from_date = intent['slots']['date']['value']
@@ -157,15 +159,18 @@ class IntentsClass(HelperClass):
 
         should_end_session = True
 
-        if 'value' in intent['slots']['location']:
-            location = intent['slots']['location']['value']
-        elif env('DEFAULT_LOCATION'):
-            location = env('DEFAULT_LOCATION')
+        try:
+            if 'value' in intent['slots']['location']:
+                location = intent['slots']['location']['value']
+            else:
+                location = session['user']['accessToken']
+        except:
+            location = ""
 
-        if not location:
-            speech_output = "I'm not sure what you would like to do. " \
-                            "Please try again."
-            reprompt_text = "I'm not sure what you would like to do."
+        if location == "":
+            card_title = "Locaton Not Specified"
+            speech_output = "Please provide a location or use account linking to set a default one."
+            reprompt_text = "Please provide a location or use account linking to set a default one."
         else:
             if 'value' in intent['slots']['date']:
                 from_date = intent['slots']['date']['value']
@@ -178,7 +183,7 @@ class IntentsClass(HelperClass):
 
             try:
                 self.film = process.extractOne(intent['slots']['film']['value'], self.films)[0]
-                self.showtimes = ', '.join(Helper.get_showtimes(self.film, session))
+                self.showtimes = ', '.join(Helper.get_showtimes(self.film))
                 card_title = self.film
                 speech_output = "%s is showing at %s on the %s at %s " % (
                     self.film, self.venue_name, from_date, self.showtimes)
@@ -199,18 +204,13 @@ class IntentsClass(HelperClass):
         user.
         """
 
-        try:
-            print "Your accessToken is: " + session['user']['accessToken']
-        except:
-            print "access token error"
-
         should_end_session = True
 
         if 'value' in intent['slots']['film']:
             try:
                 self.film = process.extractOne(intent['slots']['film']['value'], session[
                     'attributes']['films'])[0]
-                self.showtimes = ', '.join(Helper.get_showtimes(self.film, session))
+                self.showtimes = ', '.join(Helper.get_showtimes(self.film))
             except:
                 self.film = intent['slots']['film']['value']
                 self.showtimes = "not available"
@@ -289,7 +289,6 @@ def setup_env():
     os.environ['ENV_FILE'] = ENV_FILE
     populate_env()
 
-
 def verify_application_id(candidate):
     """ verify app id """
     if env('SKILL_APPID'):
@@ -305,10 +304,6 @@ def verify_application_id(candidate):
             raise
 
 # --------------- Secondary handlers ------------------
-
-Helper = HelperClass()
-Intents = IntentsClass()
-
 
 def on_session_started(session_started_request, session):
     """ Called when the session starts """
@@ -367,6 +362,9 @@ def on_session_ended(session_ended_request, session):
 
 
 # --------------- Main handler ------------------
+
+Helper = HelperClass()
+Intents = IntentsClass()
 
 def lambda_handler(event, context):
     """ main handler """
